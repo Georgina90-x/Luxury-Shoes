@@ -104,6 +104,26 @@ body {
     background-color: var(--taupe);
 }
 
+/* Style for back to top button in products & update/remove buttons in bag */
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.btt-button:hover {
+    background: var(--taupe) !important;
+    color: var(--white) !important;
+}
+
+.btt-link,
+.update.link,
+.remove-link {
+    cursor: pointer;
+}
+
 /* -------------------------------------------MEDIA QUERIES */
 
 /* XL Screens */
@@ -132,6 +152,7 @@ body {
 @media (max-width: 991px) {
     .header-container {
         padding-top: 175px;
+        padding-bottom: 40px;
     }
 
     body {
