@@ -138,3 +138,12 @@ body {
         height: calc(100vh - 116px);
     }
 }
+
+/* Category badge background styles */
+.category-badge {
+    font-family: 'Raleway', serif;
+}
+a.category-badge > span.badge:hover {
+    background: var(--taupe) !important;
+    color: var(--white) !important;
+}
