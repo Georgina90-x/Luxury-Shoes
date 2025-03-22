@@ -87,6 +87,12 @@ body {
     border: var(--black) 1px solid !important;
 }
 
+/* Delivery Banner Styling */
+
+.bg-taupe {
+    background-color: var(--taupe);
+}
+
 /* -------------------------------------------MEDIA QUERIES */
 
 /* XL Screens */
