@@ -87,6 +87,17 @@ body {
     border: var(--black) 1px solid !important;
 }
 
+/* Overlay to create white background across the site */
+.overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: var(--white);
+    z-index: -1;
+}
+
 /* Delivery Banner Styling */
 
 .bg-taupe {
@@ -120,7 +131,7 @@ body {
 /* padding for mobile navbar */
 @media (max-width: 991px) {
     .header-container {
-        padding-top: 116px;
+        padding-top: 175px;
     }
 
     body {
