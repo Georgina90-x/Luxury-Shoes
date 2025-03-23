@@ -154,6 +154,17 @@ a.category-badge > span.badge:hover {
     color: var(--white) !important;
 }
 
+/* wrapper for table responsiveness */
+.wrapper {
+    width: min(900px, 100% - 3rem);
+    margin-inline: auto;
+}
+
+.table-container {
+    max-width: 100%;
+    overflow-x: scroll;
+}
+
 /* -------------------------------------------MEDIA QUERIES */
 
 /* XL Screens */

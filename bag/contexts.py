@@ -34,7 +34,7 @@ def bag_contents(request):
                     'quantity': quantity,
                     'product': product,
                     'shoesize': shoesize,
-                })          
+                })
 
     if request.path in ['/bag/', '/checkout/']:
         vat_calc = Decimal('0.20')  # calculates the 20% UK VAT
