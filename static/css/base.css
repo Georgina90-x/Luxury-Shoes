@@ -87,6 +87,27 @@ body {
     border: var(--black) 1px solid !important;
 }
 
+.border-teal {
+    border: var(--teal) 1px solid !important;
+}
+
+.btn-outline-black {
+    background: var(--white);
+    color: var(--black) !important;
+    border: var(--black) 1px solid;
+}
+
+.btn-outline-black:hover,
+.btn-outline-black:active,
+.btn-outline-black:focus {
+    background: var(--black);
+    color: var(--white) !important;
+}
+
+.border-black {
+    border: var(--black) 1px solid !important;
+}
+
 /* Overlay to create white background across the site */
 .overlay {
     height: 100%;
@@ -124,6 +145,15 @@ body {
     cursor: pointer;
 }
 
+/* Category badge background styles */
+.category-badge {
+    font-family: 'Raleway', serif;
+}
+a.category-badge > span.badge:hover {
+    background: var(--taupe) !important;
+    color: var(--white) !important;
+}
+
 /* -------------------------------------------MEDIA QUERIES */
 
 /* XL Screens */
@@ -158,13 +188,4 @@ body {
     body {
         height: calc(100vh - 116px);
     }
-}
-
-/* Category badge background styles */
-.category-badge {
-    font-family: 'Raleway', serif;
-}
-a.category-badge > span.badge:hover {
-    background: var(--taupe) !important;
-    color: var(--white) !important;
 }
