@@ -71,6 +71,8 @@ TEMPLATES = [
     },
 ]
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'  # for toasts
+
 AUTHENTICATION_BACKENDS = (
     # Needed to login to django admin
     'django.contrib.auth.backends.ModelBackend',
