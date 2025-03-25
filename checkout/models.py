@@ -7,7 +7,7 @@ from django.conf import settings
 from django_countries.fields import CountryField
 
 from products.models import Product
-from decimal import Decimal
+#from decimal import Decimal
 
 
 class Order(models.Model):
@@ -51,8 +51,10 @@ class Order(models.Model):
             ['lineitem_total__sum'] or 0
         )
 
-        vat_calc = Decimal(settings.VAT_CALC)
-        self.vat_total = (self.order_total * vat_calc).quantize(Decimal('0.01'))
+        vat_calc = settings.VAT_CALC
+        self.vat_total = self.order_total * vat_calc / 100
+        #vat_calc = Decimal(settings.VAT_CALC)
+        #self.vat_total = (self.order_total * vat_calc).quantize(Decimal('0.01'))
 
         if self.order_total + self.vat_total < settings.FREE_DELIVERY_THRESHOLD:
             self.delivery_cost = (
