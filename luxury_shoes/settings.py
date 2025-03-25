@@ -19,7 +19,10 @@ SECRET_KEY = 'django-insecure-h^zf5gw45ygg!8)0ii&(w5md1+9db+%y7g5m-0d87996o4ihc4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',  # VS Code Preview
+    'localhost',  # Stripe webhook listener
+]
 
 
 # Application definition
@@ -179,3 +182,4 @@ VAT_CALC = 20
 STRIPE_CURRENCY = 'gbp'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
