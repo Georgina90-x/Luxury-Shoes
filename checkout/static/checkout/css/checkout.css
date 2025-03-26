@@ -67,7 +67,7 @@ legend {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(140, 125, 117, .85);
+    background: rgba(140, 125, 117, .75);
     z-index: 9999;
 }
 
@@ -77,4 +77,17 @@ legend {
     justify-content: center;
     margin: 0;
     height: 100%;
+}
+
+select#id_country {
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid #000; /* Match input borders */
+  background-color: white;
+  box-shadow: 0 1px 3px 0 #000; /* Match text input shadow */
+  border-radius: 0;
+  font-size: 16px;
+  appearance: none; /* Removes default browser styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
