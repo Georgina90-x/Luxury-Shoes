@@ -55,7 +55,7 @@ legend {
     font-weight: bold;
     padding: 0 10px;
     width: auto;
-    background: white;
+    background: var(--white);
     color: #333;
 }
 
@@ -79,10 +79,11 @@ legend {
     height: 100%;
 }
 
+/* Makes the country select box the same as the rest of the form */
 select#id_country {
   height: 40px;
   padding: 10px 12px;
-  border: 1px solid #000; /* Match input borders */
+  border: 1px solid #333; /* Match input borders */
   background-color: white;
   box-shadow: 0 1px 3px 0 #000; /* Match text input shadow */
   border-radius: 0;
@@ -90,4 +91,105 @@ select#id_country {
   appearance: none; /* Removes default browser styling */
   -webkit-appearance: none;
   -moz-appearance: none;
+}
+
+/* Makes the form fields rounded */
+.stripe-style-input,
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="password"],
+textarea,
+select {
+    border-radius: 8px;  /* Adjust the value for more/less rounding */
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/* Ensures the select dropdown matches */
+select {
+    appearance: none; /* Removes default browser styling */
+    background-color: white;
+}
+
+/* Add focus effect */
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--taupe);
+    box-shadow: 0 0 5px rgba(140, 125, 117, 0.5);
+    outline: none;
+}
+
+input,
+textarea,
+select {
+    border-radius: 10px; /* Adjust as needed */
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+select {
+  border-radius: 10px !important; /* Force rounding */
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: white;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 140'%3E%3Cpolygon points='70,100 10,40 130,40' fill='%238C7D75'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+}
+
+/* Bootstrap override in case it's applying .form-control */
+select.form-control {
+  border-radius: 10px !important;
+}
+
+/* Ensure select keeps border-radius when focused */
+select:focus {
+  border-color: var(--taupe);
+  box-shadow: 0 0 5px rgba(140, 125, 117, 0.5);
+  outline: none;
+  border-radius: 10px !important;
+}
+
+/* Ensure select looks correct inside forms */
+select.form-control {
+  height: 45px !important;
+  line-height: 1.5 !important; /* increase line height to show all text
+}
+
+/* Lighter text inside all form fields */
+input,
+select,
+textarea {
+    color: rgba(0, 0, 0, 0.5) !important; /* Light gray text */
+}
+
+/* Make placeholder text even lighter */
+input::placeholder,
+textarea::placeholder {
+    color: rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Ensure country select dropdown text matches rest of form */
+select option {
+    color: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Override Bootstrap form-control */
+.form-control {
+    color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Ensure text stays light when focused */
+input:focus,
+select:focus,
+textarea:focus {
+    color: rgba(0, 0, 0, 0.7) !important; /* Slightly darker on focus */
 }
