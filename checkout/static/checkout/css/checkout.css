@@ -165,10 +165,11 @@ select.form-control {
 }
 
 /* Lighter text inside all form fields */
-input,
-select,
-textarea {
+form input,
+form select,
+form textarea {
     color: rgba(0, 0, 0, 0.5) !important; /* Light gray text */
+    -webkit-text-fill-color: rgba(0, 0, 0, 0.5) !important;
 }
 
 /* Make placeholder text even lighter */
