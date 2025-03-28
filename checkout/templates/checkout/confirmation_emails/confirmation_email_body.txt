@@ -1,0 +1,40 @@
+Dear {{ order.full_name }},
+
+Welcome to the world of Luxe Shoes – where elegance meets comfort.
+
+We're thrilled to let you know that we've received your order! Here’s everything you need to know:
+
+ORDER DETAILS
+Order Number: {{ order.order_number }}
+
+ITEMS ORDERED:
+{% for item in order.lineitems.all %}
+- {{ item.product.name }}{% if item.has_shoesizes %} - Size {{ item.has_shoesizes|upper }}{% endif %}  
+  Quantity: {{ item.quantity }} @ £{{ item.product.price }} each
+{% endfor %}
+
+SHIPPING TO:
+{{ order.street_address1 }}
+{{ order.town_or_city }}
+{{ order.postcode }}
+{{ order.country }}
+Phone: {{ order.phone_number }}
+
+PAYMENT SUMMARY
+Order Total: £{{ order.order_total }}
+Delivery Cost: £{{ order.delivery_cost }}
+VAT Total: {{ order.vat_total }}
+Grand Total (Inc. VAT): £{{ order.grand_total }}
+
+SHIPPING INFORMATION
+Your Luxe Shoes will be dispatched within 3-5 business days. Please allow extra time during bank holidays and the festive season.
+
+NEED TO MAKE A CHANGE?
+If you notice any errors, please reach out within 24 hours – after that, we won’t be able to make adjustments.
+Contact us at {{ contact_email }}.
+
+We can’t wait for you to step into luxury. Thank you for choosing Luxe Shoes!
+
+With love & style,
+Georgina
+Luxe Shoes

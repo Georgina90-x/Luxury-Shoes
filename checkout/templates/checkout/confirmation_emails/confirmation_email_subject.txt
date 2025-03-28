@@ -1,0 +1,1 @@
+Luxe Shoes Order {{ order.order_number }} - Confirmed & On Its Way!

@@ -184,3 +184,11 @@ STRIPE_CURRENCY = 'gbp'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
+
+# Default email for no reply
+DEFAULT_FROM_EMAIL = "noreply@luxuryshoes.com"
+
+# Custom email addresses for different types of emails
+EMAIL_FROM_ORDERS = "orders@luxuryshoes.com"
+EMAIL_FROM_SUPPORT = "support@luxuryshoes.com"
+EMAIL_FROM_MARKETING = "marketing@luxuryshoes.com"
