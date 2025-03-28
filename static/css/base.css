@@ -297,6 +297,11 @@ a.category-badge > span.badge:hover {
     overflow-y: auto;
 }
 
+/* Style to size the choose file field in add product form */
+input[type="file"] {
+    width: 100% !important; 
+}
+
 
 /* -------------------------------------------MEDIA QUERIES */
 
