@@ -37,12 +37,16 @@
             <div class="row">
                 <div class="col">
                     <strong><p class="mt-3 mb-1 text-black">
-                        Total{% if free_delivery_calc > 0 %} (Exc. Delivery){% endif %}
-                        <span class="float-right">£{{ total|floatformat:2 }}</span>
+                        Total: £{{ grand_total|floatformat:2 }} (Inc. VAT - Exc. Delivery)
+                        <span class="float-right">£{{ grand_total|floatformat:2 }}</span>
                     </p></strong>
                     {% if free_delivery_calc > 0 %}
                         <p class="mb-0 p-2 bg-info shadow-sm text-black text-center rounded">
-                            Spend <strong>£{{ free_delivery_calc }}</strong> more to get free delivery!
+                            Spend <strong>£{{ free_delivery_calc|floatformat:2 }}</strong> more to get free delivery!
+                        </p>
+                    {% else %}
+                        <p class="mb-0 p-2 bg-success shadow-sm text-white text-center rounded">
+                            Your order qualifies for <strong>FREE delivery!</strong>
                         </p>
                     {% endif %}
                     <br>
