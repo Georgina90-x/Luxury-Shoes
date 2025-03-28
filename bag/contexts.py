@@ -36,11 +36,8 @@ def bag_contents(request):
                     'shoesize': shoesize,
                 })
 
-    if request.path in ['/bag/', '/checkout/']:
-        vat_calc = Decimal('0.20')  # calculates the 20% UK VAT
-        vat_total = (total * vat_calc).quantize(Decimal('0.01'))
-    else:
-        vat_total = Decimal('0.00')
+    vat_calc = Decimal('0.20')  # calculates the 20% UK VAT
+    vat_total = (total * vat_calc).quantize(Decimal('0.01'))
 
     subtotal = total + vat_total
 
