@@ -83,12 +83,12 @@ legend {
 select#id_country {
   height: 40px;
   padding: 10px 12px;
-  border: 1px solid #333; /* Match input borders */
+  border: 1px solid #333;
   background-color: white;
-  box-shadow: 0 1px 3px 0 #000; /* Match text input shadow */
+  box-shadow: 0 1px 3px 0 #000;
   border-radius: 0;
   font-size: 16px;
-  appearance: none; /* Removes default browser styling */
+  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
@@ -102,14 +102,14 @@ input[type="number"],
 input[type="password"],
 textarea,
 select {
-    border-radius: 8px;  /* Adjust the value for more/less rounding */
+    border-radius: 8px;
     border: 1px solid #ccc;
     padding: 10px;
 }
 
 /* Ensures the select dropdown matches */
 select {
-    appearance: none; /* Removes default browser styling */
+    appearance: none;
     background-color: white;
 }
 
@@ -125,13 +125,13 @@ select:focus {
 input,
 textarea,
 select {
-    border-radius: 10px; /* Adjust as needed */
+    border-radius: 10px;
     padding: 10px;
     border: 1px solid #ccc;
 }
 
 select {
-  border-radius: 10px !important; /* Force rounding */
+  border-radius: 10px !important;
   padding: 10px;
   border: 1px solid #ccc;
   background-color: white;
@@ -161,14 +161,14 @@ select:focus {
 /* Ensure select looks correct inside forms */
 select.form-control {
   height: 45px !important;
-  line-height: 1.5 !important; /* increase line height to show all text */
+  line-height: 1.5 !important;
 }
 
 /* Lighter text inside all form fields */
 form input,
 form select,
 form textarea {
-    color: rgba(0, 0, 0, 0.5) !important; /* Light gray text */
+    color: rgba(0, 0, 0, 0.5) !important;
     -webkit-text-fill-color: rgba(0, 0, 0, 0.5) !important;
 }
 
@@ -192,33 +192,35 @@ select option {
 input:focus,
 select:focus,
 textarea:focus {
-    color: rgba(0, 0, 0, 0.7) !important; /* Slightly darker on focus */
+    color: rgba(0, 0, 0, 0.7) !important;
 }
 
 /* mobile styling for order summary */
 @media (max-width: 768px) {
   .order-summary-table th,
   .order-summary-table td {
-      text-align: center !important;  /* Force center alignment */
-      display: block !important;  /* Stack elements */
-      width: 100% !important;  /* Ensure full width */
+      text-align: center !important;
+      display: block !important;
+      width: 100% !important;
   }
 
   .order-summary-table tr {
-      border-bottom: 1px solid #ccc !important; /* Add separation */
+      border-bottom: 1px solid #ccc !important;
       padding-bottom: 10px !important;
       margin-bottom: 10px !important;
   }
 
   .order-summary-table th.d-none, 
   .order-summary-table td.d-none {
-      display: none !important;  /* Hide desktop-only elements */
+      display: none !important;
   }
 
   .order-summary-container {
-      padding: 10px !important;  /* Add spacing */
+      padding: 10px !important;
   }
 }
+
+/* mobile styling for checkout */
 @media (max-width: 768px) {
   .checkout-style .row {
     display: flex;
