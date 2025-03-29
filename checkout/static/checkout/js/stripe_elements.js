@@ -107,7 +107,7 @@ form.addEventListener('submit', function(ev) {
                 $('#submit-button').attr('disabled', false);
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
-                    window.Location.href = "/checkout/success/";
+                    window.location.href = "/checkout/success/";
                 }
             }
         });
