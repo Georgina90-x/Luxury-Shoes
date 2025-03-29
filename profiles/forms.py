@@ -1,5 +1,5 @@
 from django import forms
-from .models import UserProfile
+from .models import UserProfile, MarketingEmail
 from django_countries.widgets import CountrySelectWidget
 
 
@@ -36,3 +36,9 @@ class UserProfileForm(forms.ModelForm):
                 'class': 'border-black rounded profile-form-input'
             })
             self.fields[field].label = False
+
+
+class MarketingEmailForm(forms.ModelForm):
+    class Meta:
+        model = MarketingEmail
+        fields = ['subject', 'message']

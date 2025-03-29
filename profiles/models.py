@@ -34,3 +34,21 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
         UserProfile.objects.update_or_create(user=instance)
     # existing users save their profile
     instance.userprofile.save()
+
+
+class MarketingEmail(models.Model):
+    subject = models.CharField(max_length=255)
+    message = models.TextField()
+    sent_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.subject
+
+
+class EmailLog(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    email = models.ForeignKey(MarketingEmail, on_delete=models.CASCADE)
+    sent_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.email} - {self.email.subject}"
