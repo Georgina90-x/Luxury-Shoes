@@ -23,7 +23,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',  # VS Code Preview
     'localhost',  # Stripe webhook listener
-    'luxury-shoes-00974b0f1528.herokuapp.com/'  # heroku application
+    'luxury-shoes-00974b0f1528.herokuapp.com'  # heroku application
 ]
 
 
