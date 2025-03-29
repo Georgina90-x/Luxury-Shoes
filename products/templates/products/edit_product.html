@@ -72,9 +72,10 @@
             $('#filename').text(`Image will be set to: ${file.name}`);
         });
     </script>
+<!-- Event listener for the confirmation Modals -->
     <script>
         document.getElementById("confirm-update").addEventListener("click", function() {
-            document.getElementById("edit-product-form").submit();  // ✅ Triggers form submission
+            document.getElementById("edit-product-form").submit(); 
         });
     </script>    
 {% endblock %}
