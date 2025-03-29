@@ -161,7 +161,7 @@ select:focus {
 /* Ensure select looks correct inside forms */
 select.form-control {
   height: 45px !important;
-  line-height: 1.5 !important; /* increase line height to show all text
+  line-height: 1.5 !important; /* increase line height to show all text */
 }
 
 /* Lighter text inside all form fields */
@@ -193,4 +193,52 @@ input:focus,
 select:focus,
 textarea:focus {
     color: rgba(0, 0, 0, 0.7) !important; /* Slightly darker on focus */
+}
+
+/* mobile styling for order summary */
+@media (max-width: 768px) {
+  .order-summary-table th,
+  .order-summary-table td {
+      text-align: center !important;  /* Force center alignment */
+      display: block !important;  /* Stack elements */
+      width: 100% !important;  /* Ensure full width */
+  }
+
+  .order-summary-table tr {
+      border-bottom: 1px solid #ccc !important; /* Add separation */
+      padding-bottom: 10px !important;
+      margin-bottom: 10px !important;
+  }
+
+  .order-summary-table th.d-none, 
+  .order-summary-table td.d-none {
+      display: none !important;  /* Hide desktop-only elements */
+  }
+
+  .order-summary-container {
+      padding: 10px !important;  /* Add spacing */
+  }
+}
+@media (max-width: 768px) {
+  .checkout-style .row {
+    display: flex;
+    align-items: center !important;
+    margin-left: -15px !important;
+    margin-right: -15px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  .checkout-style .col-3 {
+    text-align: right !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: auto !important;
+    white-space: nowrap;
+  }
+
+  .checkout-style .col-7 {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
 }

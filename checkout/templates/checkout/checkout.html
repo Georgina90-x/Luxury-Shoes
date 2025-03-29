@@ -30,16 +30,16 @@
         <div class="col-12 col-lg-6 order-lg-last mb-5">
             <p class="text-muted">Order Summary ({{ product_count }})</p>
             <div class="row">
-                <div class="col-7 offset-2">
-                    <p class="mb-1 mt-0 small text-muted">Item</p>
+                <div class="col-7">
+                    <p class="mb-1 mt-0 small text-muted d-none d-md-table-cell">Item</p>
                 </div>
-                <div class="col-3 text-right">
+                <div class="col-5 d-flex justify-content-end">
                     <p class="mb-1 mt-0 small text-muted">Subtotal</p>
                 </div>
             </div>
             {% for item in bag_items %}
-                <div class="row">
-                    <div class="col-2 mb-1">
+                <div class="row align-items-center">
+                    <div class="col-2 d-none d-md-table-cell">
                         <a href="{% url 'product_detail' item.product.id %}">
                             {% if item.product.image %}
                                 <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}">
@@ -48,12 +48,12 @@
                             {% endif %}
                         </a>
                     </div>
-                    <div class="col-7">
+                    <div class="col-7 col-md-7 d-flex flex-column">
                         <p class="my-0"><strong>{{ item.product.name }}</strong></p>
                         <p class="my-0 small">Size: {% if item.product.shoe_sizes %}{{ item.shoesize|upper }}{% else %}One Size{% endif %}</p>
                         <p class="my-0 small">Qty: {{ item.quantity }}</p>
                     </div>
-                    <div class="col-3 text-right">
+                    <div class="col-3  col-md-3 d-flex justify-content-end text-right">
                         <p class="my-0 small text-muted">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
                     </div>
                 </div>
