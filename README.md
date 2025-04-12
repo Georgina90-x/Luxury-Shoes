@@ -107,7 +107,7 @@ I have used CSS `:root` variables to easily update the global colour scheme by c
 
 | **ID** | **As A** | **I Want To Be Able To** | **So That I Can** |
 |-------------|------------|---------------------|-------------------|
-| 1 | Shopper | View the products | To select what I want to purchase |
+| 1 | Shopper | View the products | Select what I want to purchase |
 | 2 | Shopper | View products via specific categories | Quickly find the products I want to purchase |
 | 3 | Shopper | View individual product details | See how much the item costs, read the description  and see what sizes are available |
 | 4 | Shopper | View the total of my shopping bag | Be aware of how much money I am spending |
