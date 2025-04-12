@@ -279,6 +279,7 @@ _ _ _
 - [Font Awesome](https://fontawesome.com/) used to add GitHub icon to the footer and modal and search icon to the search button.
 - [Amazon Web Services](https://amazonaws.com/) used to load the static files to the deployed site and hold order information.
 - [Stripe](https://stripe.com/) used to process payments in the checkout page.
+- [Coverage](https://coverage.readthedocs.io/en/7.8.0/) used to carry out a coverage report on the code.
 
 ## Testing
 

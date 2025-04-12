@@ -1,5 +1,5 @@
-{% load static %}
 <!doctype html>
+{% load static %}
 <html lang="en">
   <head>
     
@@ -54,6 +54,7 @@
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <form method="GET" action="{% url 'products' %}">
                     <div class="input-group w-100">
+                        <label for="search-input" id="Search Our Site" class="sr-only">Search Our Site</label>
                         <input class="form-control border border-black rounded" type="text" name="q" placeholder="Search Our Site" aria-labelledby="Search Our Site">
                         <div class="input-group-append">
                             <button class="form-control btn btn-black border border-black rounded" type="submit">

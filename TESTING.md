@@ -25,45 +25,74 @@ _ _ _
 Due to issues with the previous attempt of this website application, I consistently tested the website upon each change to make sure it was running as intended. When necessary I wrote print statements, to identify code was running correctly and made adjustments if needed. I also used Heroku's logs to identify issues with the deployed website that were not present in the local development.
 
 ## Automated Testing
+As I was unfamiliar with unit testing as well as Django's unit testing, I tried a couple of unit tests (that were written by jamie2210), but was not confident doing a lot of unit tests and tried to focus on my understanding of what I was looking at. Test Driven Development is something I would love to learn more about as its applications for future code I work on will, i'm sure, prove invaluable.
 _ _ _
 
-- I wrote a number of unit tests(32) using the Django unit test framework [Django TestCase](https://docs.djangoproject.com/en/4.1/topics/testing/overview/)
+- I used 5 unit tests using the Django unit test framework [Django TestCase](https://docs.djangoproject.com/en/4.1/topics/testing/overview/)
 
-- I also used [coverage](https://pypi.org/project/coverage/) for feedback on the tests.
 
 ### Testing Results
 
-A total of 32 test all passing with no errors.
+A total of 5 tests all passing with no errors.
 
-![tests](documentation/testing/tests.png)
+![checkout-tests](TESTING/media/testing-tdd-checkout-model-test.png)
+![product-tests](TESTING/media/testing-tdd-product-model-test.png)
 
 ### Coverage Results
 
 <details><summary>Coverage Report</summary>
-<img src="documentation/testing/coverage-report.png">
+<img src="TESTING/media/testing-tdd-coverage-report.png">
 </details><br>
 
-- As you can see from the report, while I have written plenty of tests which pass, a lot of them miss resulting in a low coverage percentage.
-- This is an area I look forward to learning more about and utilising as I progress as a developer as it's an area I know I can improve. I know it will prove more and more useful helping me write more robust and tested code for future projects.
+- The coverage report shows a number of files that have 100% coverage but there are multiple files that are showing low percentages.
+- As I am fairly new to Test Driven Development, Coverage is something I plan on learning more about as I expand my knowledge on unit testing. Hopefully, in the future, I will be able to develop unit tests for my code that hit 100% coverage.
 
 ## Validation Testing
 _ _ _
 
 ### HTML Validation
 
-[W3C](https://validator.w3.org/) Markup Validation Service was used to validate the HTML of the website. All pages pass with no errors.
+[W3C](https://validator.w3.org/) Markup Validation Service was used to validate the HTML of the website. Every single HTML page has errors due to it not being able to read Jinja templating. No urgent errors appeared that meant the code needed adjusting.
 
-- Bag [results]()
-- Checkout [results]()
-- Checkout Success [results]()
-- Home [results]()
-- Marketing Email [results]()
-- Products [results]()
-- Product Detail [results]()
-- Product - Add [results]()
-- Product - Edit [results]()
-- Product Management [results]()
-- Profile [results]()
+<details><summary>bag.html</summary>
+<img src="TESTING/media/validator-html-bag.png">
+</details><br>
+<details><summary>checkout.html</summary>
+<img src="TESTING/media/validator-html-checkout.png">
+</details><br>
+<details><summary>checkout_success.html</summary>
+<img src="TESTING/media/validator-html-checkout-success.png">
+</details><br>
+<details><summary>base.html</summary>
+<img src="TESTING/media/validator-html-base.png">
+</details><br>
+<details><summary>index.html</summary>
+<img src="TESTING/media/validator-html-index.png">
+</details><br>
+<details><summary>send_marketing_email.html</summary>
+<img src="TESTING/media/validator-html-send-marketing-email.png">
+</details><br>
+<details><summary>marketing_email.html</summary>
+<img src="TESTING/media/validator-html-marketing-email.png">
+</details><br>
+<details><summary>profile.html</summary>
+<img src="TESTING/media/validator-html-profile.png">
+</details><br>
+<details><summary>products.html</summary>
+<img src="TESTING/media/validator-html-products.png">
+</details><br>
+<details><summary>product_detail.html</summary>
+<img src="TESTING/media/validator-html-product-detail.png">
+</details><br>
+<details><summary>product_management.html</summary>
+<img src="TESTING/media/validator-html-product-management.png">
+</details><br>
+<details><summary>add_product.html</summary>
+<img src="TESTING/media/validator-html-add-product.png">
+</details><br>
+<details><summary>edit_product.html</summary>
+<img src="TESTING/media/validator-html-edit-product.png">
+</details><br>
 
 ### CSS Validation
 
@@ -159,49 +188,43 @@ Performance testing was done using lighthouse in chrome developer tools testing 
 **Lighthouse Desktop Test Results**
 
 <details><summary>Bag</summary>
-<img src="documentation/testing/lighthouse/lighthouse-cart.png">
+<img src="">
 </details>
 <details><summary>Checkout</summary>
-<img src="documentation/testing/lighthouse/lighthouse-checkout.png">
+<img src="">
 </details>
 <details><summary>Checkout Success</summary>
-<img src="documentation/testing/lighthouse/lighthouse-checkout-success.png">
-</details>
-<details><summary>Contact</summary>
-<img src="documentation/testing/lighthouse/lighthouse-contact.png">
-</details>
-<details><summary>Contact Success</summary>
-<img src="documentation/testing/lighthouse/lighthouse-contact-success.png">
-</details>
-<details><summary>Favourites</summary>
-<img src="documentation/testing/lighthouse/lighthouse-favourites.png">
+<img src="">
 </details>
 <details><summary>Home</summary>
-<img src="documentation/testing/lighthouse/lighthouse-home.png">
+<img src="">
+</details>
+<details><summary>Login</summary>
+<img src="">
+</details>
+<details><summary>Logout</summary>
+<img src="">
+</details>
+<details><summary>Product Management</summary>
+<img src="">
 </details>
 <details><summary>Products</summary>
-<img src="documentation/testing/lighthouse/lighthouse-products.png">
+<img src="">
 </details>
 <details><summary>Product Detail</summary>
-<img src="documentation/testing/lighthouse/lighthouse-product-detail.png">
+<img src="">
 </details>
 <details><summary>Product Add</summary>
-<img src="documentation/testing/lighthouse/lighthouse-product-add.png">
+<img src="">
 </details>
 <details><summary>Product Edit</summary>
-<img src="documentation/testing/lighthouse/lighthouse-product-edit.png">
+<img src="">
 </details>
 <details><summary>Profile</summary>
-<img src="documentation/testing/lighthouse/lighthouse-profile.png">
+<img src="">
 </details>
 <details><summary>Register</summary>
-<img src="documentation/testing/lighthouse/lighthouse-register.png">
-</details>
-<details><summary>Sign In</summary>
-<img src="documentation/testing/lighthouse/lighthouse-signin.png">
-</details>
-<details><summary>Sign Out</summary>
-<img src="documentation/testing/lighthouse/lighthouse-signout.png">
+<img src="">
 </details><br>
 
 

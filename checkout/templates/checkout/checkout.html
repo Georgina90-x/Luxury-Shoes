@@ -104,7 +104,8 @@
                             {% endif %}
                         </div>
                     </fieldset>
-                    <legend class="fieldset-label small text-black px-2 w-auto">Payment Card Details</legend>
+                    <fieldset class="px-3">
+                        <legend class="fieldset-label small text-black px-2 w-auto">Payment Card Details</legend>
                         <!-- A Stripe card element will go here -->
                         <div class="mb-3 rounded" id="card-element"></div>
                         <!-- Used to display form errors -->
@@ -138,6 +139,7 @@
     </div>
     <div id="loading-overlay">
         <h1 class="text-light logo-font loading-spinner">
+            <span class="sr-only">Loading...</span>
             <span class="icon">
                 <i class="fas fa-3x fa-sync-alt fa-spin"></i>
             </span>
