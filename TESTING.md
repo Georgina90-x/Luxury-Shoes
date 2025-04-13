@@ -231,58 +231,58 @@ Performance testing was done using lighthouse in chrome developer tools testing 
 Performance was slower for mobile testing. I did as much as I could improve it with some scores as low as 24 now sitting around 60 or above for most. There isn't much more I could do as essential JS and CSS was the main cause, so I am happy with the improvement. 
 
 <details><summary>Render Blocking</summary>
-<img src="documentation/testing/lighthouse/mobile/render-block.png">
+<img src="">
 </details>
 <details><summary>Reduce JS</summary>
-<img src="documentation/testing/lighthouse/mobile/reduce-js.png">
+<img src="">
 </details><br>
 
 **Lighthouse Mobile Test Results**
 
 <details><summary>Bag</summary>
-<img src="documentation/testing/lighthouse/mobile/cart.png">
+<img src="">
 </details>
 <details><summary>Checkout</summary>
-<img src="documentation/testing/lighthouse/mobile/checkout.png">
+<img src="">
 </details>
 <details><summary>Checkout Success</summary>
-<img src="documentation/testing/lighthouse/mobile/checkout-success.png">
+<img src="">
 </details>
 <details><summary>Contact</summary>
-<img src="documentation/testing/lighthouse/mobile/contact.png">
+<img src="">
 </details>
 <details><summary>Contact Success</summary>
-<img src="documentation/testing/lighthouse/mobile/contact-success.png">
+<img src="">
 </details>
 <details><summary>Favourites</summary>
-<img src="documentation/testing/lighthouse/mobile/favourites.png">
+<img src="">
 </details>
 <details><summary>Home</summary>
-<img src="documentation/testing/lighthouse/mobile/home.png">
+<img src="">
 </details>
 <details><summary>Products</summary>
-<img src="documentation/testing/lighthouse/mobile/all-products.png">
+<img src="">
 </details>
 <details><summary>Product Detail</summary>
-<img src="documentation/testing/lighthouse/mobile/product-detail.png">
+<img src="">
 </details>
 <details><summary>Product Add</summary>
-<img src="documentation/testing/lighthouse/mobile/product-add.png">
+<img src="">
 </details>
 <details><summary>Product Edit</summary>
-<img src="documentation/testing/lighthouse/mobile/product-edit.png">
+<img src="">
 </details>
 <details><summary>Profile</summary>
-<img src="documentation/testing/lighthouse/mobile/profile.png">
+<img src="">
 </details>
 <details><summary>Register</summary>
-<img src="documentation/testing/lighthouse/mobile/register.png">
+<img src="">
 </details>
 <details><summary>Sign In</summary>
-<img src="documentation/testing/lighthouse/mobile/signin.png">
+<img src="">
 </details>
 <details><summary>Sign Out</summary>
-<img src="documentation/testing/lighthouse/mobile/signout.png">
+<img src="">
 </details><br>
 
 ### Accessibility
@@ -296,9 +296,9 @@ To ensure the site is accessible as possible I have taken the following steps:
 
 [Wave accessibility](#https://wave.webaim.org/) was used to test the websites accessibility, all results have no warnings or errors.
 
-Due to restrictions when logged or having items in the bag I am only able to provided live links of areas that aren't restricted.
 
 - Bag (empty) [results]()
+- Bag (with product) [results]()
 - Checkout [results]()
 - Checkout Success [results]()
 - Home [results]()
