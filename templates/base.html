@@ -52,10 +52,10 @@
                 </a>
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-                <form method="GET" action="{% url 'products' %}">
+                <form method="GET" action="{% url 'products' %}" role="search">
                     <div class="input-group w-100">
                         <label for="search-input" id="search-label" class="sr-only">Search Our Site</label>
-                        <input class="form-control border border-black rounded" type="text" name="q" placeholder="Search Our Site">
+                        <input class="form-control border border-black rounded" id="search-input" type="text" name="q" placeholder="Search Our Site">
                         <div class="input-group-append">
                             <button class="form-control btn btn-black border border-black rounded" type="submit" aria-label="Search">
                                 <span class="icon">
@@ -112,6 +112,7 @@
                     data-target="#main-nav" aria-controls="main-nav" 
                         aria-expanded="false" aria-label="Toggle Navigation">
                         <span class="navbar-toggler-icon"></span>
+                        <span class="sr-only">Toggle Navigation</span>
                 </button>
                 {% include 'includes/mobile-top-header.html' %}
                 {% include 'includes/main-nav.html' %}
