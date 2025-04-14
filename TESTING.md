@@ -291,20 +291,19 @@ To ensure the site is accessible as possible I have taken the following steps:
 [Wave accessibility](#https://wave.webaim.org/) was used to test the websites accessibility, all results have no warnings or errors.
 
 
-- Bag (empty) [results]()
-- Bag (with product) [results]()
-- Checkout [results]()
-- Checkout Success [results]()
-- Home [results]()
-- Log In [results]()
-- Products [results]()
-- Product Detail [results]()
-- Product Management [results]()
-- Register [results]()
+- Bag (empty) [results](TESTING/media/wave/wave-bag.png)
+- Checkout [results]() ----------- cannot access
+- Checkout Success [results](TESTING/media/wave/wave-checkout-success.png)
+- Home [results](TESTING/media/wave/wave-home.png)
+- Log In [results]() -------- aria labels
+- Products [results](TESTING/media/wave/wave-products.png)
+- Product Detail [results]() ------- aria labels
+- Product Management [results]() ------- cannot access
+- Register [results]() ------ aria labels
 
 
 
-## Manuel Testing
+## Manual Testing
 _ _ _
 
 ### Device testing
@@ -321,7 +320,6 @@ In addition, the website was tested using Google Chrome Developer Tools device t
 The website was tested on the following browsers:
 - Apple Safari
 - Google Chrome
-- Microsoft Edge
 - Mozilla Firefox
 
 ### Developer Feature Testing (Manual)
