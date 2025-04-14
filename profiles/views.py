@@ -69,18 +69,23 @@ def send_marketing_email(request):
             "subject": subject,
             "message": message
         })
-        plain_message = strip_tags(html_message)  # Fallback for non-HTML email clients
+        # Fallback for non-HTML email clients
+        plain_message = strip_tags(html_message)
 
-        recipients = User.objects.filter(is_active=True, email__isnull=False).values_list("email", flat=True)
+        recipients = User.objects.filter(is_active=True,
+                                         email__isnull=False).values_list(
+                                             "email", flat=True)
 
         if not recipients:
-            messages.warning(request, "No active users with email addresses found.")
+            messages.warning(request, "No active users with \
+                              email addresses found.")
             return redirect("send_marketing_email")
 
         email = EmailMultiAlternatives(
             subject=subject,
             body=plain_message,
-            from_email=settings.DEFAULT_FROM_EMAIL,  # Use configured email sender
+            # Use configured email sender
+            from_email=settings.DEFAULT_FROM_EMAIL,
             to=[],
             bcc=list(recipients)  # Send as BCC to protect user privacy
         )
@@ -88,7 +93,8 @@ def send_marketing_email(request):
         email.send()
 
         # Create a new MarketingEmail record
-        marketing_email = MarketingEmail.objects.create(subject=subject, message=message)
+        marketing_email = MarketingEmail.objects.create(subject=subject,
+                                                        message=message)
 
         # Log only users who received the email
         users_received = User.objects.filter(email__in=recipients)

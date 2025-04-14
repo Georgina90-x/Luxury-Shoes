@@ -56,17 +56,20 @@ class Order(models.Model):
 
         vat_calc = settings.VAT_CALC
         self.vat_total = self.order_total * vat_calc / 100
-        #vat_calc = Decimal(settings.VAT_CALC)
-        #self.vat_total = (self.order_total * vat_calc).quantize(Decimal('0.01'))
 
-        if self.order_total + self.vat_total < settings.FREE_DELIVERY_THRESHOLD:
+        if (
+            self.order_total + self.vat_total
+            < settings.FREE_DELIVERY_THRESHOLD
+        ):
             self.delivery_cost = (
                 self.order_total * settings.STANDARD_DELIVERY_PRICE / 100
             )
         else:
             self.delivery_cost = 0
 
-        self.grand_total = self.order_total + self.vat_total + self.delivery_cost
+        self.grand_total = (
+            self.order_total + self.vat_total + self.delivery_cost
+        )
         self.save()
 
     def save(self, *args, **kwargs):

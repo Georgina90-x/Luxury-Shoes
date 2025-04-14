@@ -11,7 +11,11 @@ class OrderForm(forms.ModelForm):
                   'town_or_city', 'county', 'postcode',
                   'country', 'phone_number',)
         widgets = {
-            'country': CountrySelectWidget(attrs={'class': 'stripe-style-input'}),
+            'country': CountrySelectWidget(
+                attrs={
+                    'class': 'stripe-style-input'
+                }
+            ),
         }
 
     def __init__(self, *args, **kwargs):
@@ -39,4 +43,6 @@ class OrderForm(forms.ModelForm):
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
                 self.fields[field].widget.attrs['class'] = 'stripe-style-input'
-                self.fields[field].label = placeholders[field].replace(' *', '')
+                self.fields[field].label = (
+                    placeholders[field].replace(' *', '')
+                )

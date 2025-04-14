@@ -142,7 +142,6 @@ def checkout(request):
         }
 
         return render(request, template, context)
-        # end of the corrected indentation
 
 
 def checkout_success(request, order_number):

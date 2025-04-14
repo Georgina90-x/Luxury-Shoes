@@ -1,4 +1,7 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from django.shortcuts import (
+    render, redirect, reverse,
+    HttpResponse, get_object_or_404
+)
 from django.contrib import messages
 
 from products.models import Product
@@ -27,17 +30,41 @@ def add_to_bag(request, item_id):
         if item_id in list(bag.keys()):
             if shoesize in bag[item_id]['items_by_shoesize'].keys():
                 bag[item_id]['items_by_shoesize'][shoesize] += quantity
-                messages.success(request, f'Updated size {shoesize.upper()} {product.name} quantity to {bag[item_id]}!')
+                messages.success(
+                    request,
+                    (
+                        f'Updated size {shoesize.upper()} '
+                        f'{product.name} quantity to {bag[item_id]}!'
+                    )
+                )
+
             else:
                 bag[item_id]['items_by_shoesize'][shoesize] = quantity
-                messages.success(request, f'Added size {shoesize.upper()} {product.name} to your bag!')
+                messages.success(
+                    request,
+                    (
+                        f'Added size {shoesize.upper()} '
+                        f'{product.name} to your bag!'
+                    )
+                )
         else:
             bag[item_id] = {'items_by_shoesize': {shoesize: quantity}}
-            messages.success(request, f'Added size {shoesize.upper()} {product.name} to your bag!')
+            messages.success(
+                request,
+                (
+                    f'Added size {shoesize.upper()} '
+                    f'{product.name} to your bag!'
+                )
+            )
     else:
         if item_id in list(bag.keys()):
             bag[item_id] += quantity
-            messages.success(request, f'Updated {product.name} quantity to {bag[item_id]}!')
+            messages.success(
+                request,
+                (
+                    f'Updated {product.name} quantity to {bag[item_id]}!'
+                )
+            )
         else:
             bag[item_id] = quantity
             messages.success(request, f'Added {product.name} to your bag!')
@@ -60,16 +87,35 @@ def adjust_bag(request, item_id):
     if shoesize:
         if quantity > 0:
             bag[item_id]['items_by_shoesize'][shoesize] = quantity
-            messages.success(request, f'Updated size {shoesize.upper()} {product.name} quantity to {bag[item_id]["items_by_shoesize"][shoesize]}')
+            messages.success(
+                request,
+                (
+                    f'Updated size {shoesize.upper()} '
+                    f'{product.name} quantity to '
+                    f'{bag[item_id]["items_by_shoesize"][shoesize]}'
+                )
+            )
         else:
             del bag[item_id]['items_by_shoesize'][shoesize]
             if not bag[item_id]['items_by_shoesize']:
                 bag.pop(item_id)
-            messages.success(request, f'Removed size {shoesize.upper()} {product.name} from your bag!')
+            messages.success(
+                request,
+                (
+                    f'Removed size {shoesize.upper()} '
+                    f'{product.name} from your bag!'
+                )
+            )
     else:
         if quantity > 0:
             bag[item_id] = quantity
-            messages.success(request, f'Updated {product.name} quantity to {bag[item_id]}')
+            messages.success(
+                request,
+                (
+                    f'Updated {product.name} '
+                    f'quantity to {bag[item_id]}'
+                )
+            )
         else:
             bag.pop[item_id]
             messages.success(request, f'Removed {product.name} from your bag!')
@@ -91,7 +137,13 @@ def remove_from_bag(request, item_id):
             del bag[item_id]['items_by_shoesize'][shoesize]
             if not bag[item_id]['items_by_shoesize']:
                 bag.pop(item_id)
-            messages.success(request, f'Removed size {shoesize.upper()} {product.name} from your bag!')
+            messages.success(
+                request,
+                (
+                    f'Removed size {shoesize.upper()} '
+                    f'{product.name} from your bag!'
+                )
+            )
         else:
             bag.pop(item_id)
             messages.success(request, f'Removed {product.name} from your bag!')

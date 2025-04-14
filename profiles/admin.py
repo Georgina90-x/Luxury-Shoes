@@ -8,8 +8,12 @@ class MarketingEmailAdmin(admin.ModelAdmin):
     search_fields = ("subject",)  # Add search functionality
     ordering = ("-sent_at",)  # Sort by most recent
 
+
 @admin.register(EmailLog)
 class EmailLogAdmin(admin.ModelAdmin):
-    list_display = ("user", "email", "sent_at")  # Display user, email & timestamp
-    search_fields = ("user__email", "email__subject")  # Search by user email & subject
+    list_display = ("user", "email", "sent_at")  # Display user, email & time
+    search_fields = (
+        "user__email",
+        "email__subject",  # Search by email & subject
+    )
     list_filter = ("sent_at",)  # Add filter by date

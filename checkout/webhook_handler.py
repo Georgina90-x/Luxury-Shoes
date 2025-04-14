@@ -58,8 +58,6 @@ class StripeWH_Handler:
             bag = intent.metadata.get('bag', '{}')
             save_info = intent.metadata.get('save_info', False)
 
-            print("Received metadata:", intent.metadata) # debugging
-
             # Get the Charge object
             stripe_charge = stripe.Charge.retrieve(
                 intent.latest_charge
@@ -79,13 +77,16 @@ class StripeWH_Handler:
             if username != 'AnonymousUser':
                 profile = UserProfile.objects.get(user__username=username)
                 if save_info:
-                    profile.default_street_address1 = shipping_details.get('address', {}).get('line1')
-                    profile.default_street_address2 = shipping_details.get('address', {}).get('line2')
-                    profile.default_town_or_city = shipping_details.get('address', {}).get('city')
-                    profile.default_county = shipping_details.get('address', {}).get('state')
-                    profile.default_postcode = shipping_details.get('address', {}).get('postal_code')
-                    profile.default_country = shipping_details.get('address', {}).get('country')
-                    profile.default_phone_number = shipping_details.get('phone')
+                    address = shipping_details.get('address', {})
+                    profile.default_street_address1 = address.get('line1')
+                    profile.default_street_address2 = address.get('line2')
+                    profile.default_town_or_city = address.get('city')
+                    profile.default_county = address.get('state')
+                    profile.default_postcode = address.get('postal_code')
+                    profile.default_country = address.get('country')
+                    profile.default_phone_number = (
+                        shipping_details.get('phone')
+                    )
                     profile.save()
 
             order_exists = False
@@ -95,16 +96,23 @@ class StripeWH_Handler:
                     order = Order.objects.get(
                         full_name__iexact=shipping_details.get('name', ''),
                         email__iexact=billing_details.get('email', ''),
-                        street_address1__iexact=shipping_details.get('address', {}).get('line1', ''),
-                        street_address2__iexact=shipping_details.get('address', {}).get('line2', ''),
-                        town_or_city__iexact=shipping_details.get('address', {}).get('city', ''),
-                        county__iexact=shipping_details.get('address', {}).get('state', ''),
-                        postcode__iexact=shipping_details.get('address', {}).get('postal_code', ''),
-                        country__iexact=shipping_details.get('address', {}).get('country', ''),
+                        street_address1__iexact=shipping_details.get(
+                            'address', {}).get('line1', ''),
+                        street_address2__iexact=shipping_details.get(
+                            'address', {}).get('line2', ''),
+                        town_or_city__iexact=shipping_details.get(
+                            'address', {}).get('city', ''),
+                        county__iexact=shipping_details.get('address', {}).get(
+                            'state', ''),
+                        postcode__iexact=shipping_details.get(
+                            'address', {}).get(
+                            'postal_code', ''),
+                        country__iexact=shipping_details.get(
+                            'address', {}).get('country', ''),
                         phone_number__iexact=shipping_details.get('phone', ''),
                         grand_total=grand_total,
                         original_bag=bag,
-                        stripe_pid=pid,
+                        stripe_pid=pid
                     )
                     order_exists = True
                     break
@@ -121,20 +129,26 @@ class StripeWH_Handler:
                 order = None
                 try:
                     order = Order.objects.create(
-                                full_name=shipping_details.get('name', ''),
-                                user_profile=profile,
-                                email=billing_details.get('email', ''),
-                                street_address1=shipping_details.get('address', {}).get('line1', ''),
-                                street_address2=shipping_details.get('address', {}).get('line2', ''),
-                                town_or_city=shipping_details.get('address', {}).get('city', ''),
-                                county=shipping_details.get('address', {}).get('state', ''), 
-                                postcode=shipping_details.get('address', {}).get('postal_code', ''),
-                                country=shipping_details.get('address', {}).get('country', ''),
-                                phone_number=shipping_details.get('phone', ''),
-                                grand_total=grand_total,
-                                original_bag=bag,
-                                stripe_pid=pid,
-                            )
+                        full_name=shipping_details.get('name', ''),
+                        user_profile=profile,
+                        email=billing_details.get('email', ''),
+                        street_address1=shipping_details.get(
+                            'address', {}).get('line1', ''),
+                        street_address2=shipping_details.get(
+                            'address', {}).get('line2', ''),
+                        town_or_city=shipping_details.get(
+                            'address', {}).get('city', ''),
+                        county=shipping_details.get(
+                            'address', {}).get('state', ''),
+                        postcode=shipping_details.get(
+                            'address', {}).get('postal_code', ''),
+                        country=shipping_details.get(
+                            'address', {}).get('country', ''),
+                        phone_number=shipping_details.get('phone', ''),
+                        grand_total=grand_total,
+                        original_bag=bag,
+                        stripe_pid=pid
+                    )
                     for item_id, item_data in json.loads(bag).items():
                         product = Product.objects.get(id=item_id)
                         if isinstance(item_data, int):
@@ -159,8 +173,12 @@ class StripeWH_Handler:
                     if order:
                         order.delete()
                     return HttpResponse(
-                        content=f'Webhook received: {event["type"]} | ERROR: {e}',
-                        status=500)
+                        content=(
+                            f'Webhook received: {event["type"]} '
+                            f'| ERROR: {e}'
+                        ),
+                        status=500
+                    )
             self._send_confirmation_email(order)
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | SUCCESS: \

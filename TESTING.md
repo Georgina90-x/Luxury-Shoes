@@ -25,7 +25,7 @@ _ _ _
 Due to issues with the previous attempt of this website application, I consistently tested the website upon each change to make sure it was running as intended. When necessary I wrote print statements, to identify code was running correctly and made adjustments if needed. I also used Heroku's logs to identify issues with the deployed website that were not present in the local development.
 
 ## Automated Testing
-As I was unfamiliar with unit testing as well as Django's unit testing, I tried a couple of unit tests (that were written by jamie2210), but was not confident doing a lot of unit tests and tried to focus on my understanding of what I was looking at. Test Driven Development is something I would love to learn more about as its applications for future code I work on will, i'm sure, prove invaluable.
+As I was unfamiliar with unit testing as well as Django's unit testing, I tried a couple of unit tests (that were written by jamie2210), but was not confident doing a lot of unit tests and tried to focus on my understanding of what I was looking at as a learning opportunity. Test Driven Development is something I would love to learn more about as its applications for future code I work on will, i'm sure, prove invaluable.
 _ _ _
 
 - I used 5 unit tests using the Django unit test framework [Django TestCase](https://docs.djangoproject.com/en/4.1/topics/testing/overview/)
@@ -128,53 +128,47 @@ Base.css had one error which I researched into. It was found that font-optical-s
 
 | File | &#9989; (Pass) / &#10060; (Fail) | Proof |
 | :--- | :--- | :---: |
-| custom_storages.py | &#9989; | [custom_storages.py validation]() |
+| custom_storages.py | &#9989; | [custom_storages.py validation](TESTING/media/python_linter/validator-py-custom-storage.png) |
 | **LUXURY_SHOES** |
-| luxury_shoes/settings.py | &#9989; | [settings.py validation]() |
-| luxury_shoes/urls.py | &#9989; | [urls.py validation]() |
+| luxury_shoes/settings.py | &#9989; | [settings.py validation](TESTING/media/python_linter/validator-py-settings.png) |
+| luxury_shoes/urls.py | &#9989; | [urls.py validation](TESTING/media/python_linter/validator-py-urls.png) |
 | **BAG** |
-| bag/apps.py | &#9989; | [apps.py validation]() |
-| bag/contexts.py | &#9989; | [contexts.py validation]() |
-| bag/urls.py | &#9989; | [urls.py validation]() |
-| bag/views.py | &#9989; | [views.py validation]() |
-| bag/templatetags/bag_tools.py | &#9989; | [bag_tools.py validation]()|
-| bag/test_views.py | &#9989; | [test_views.py validation]() |
+| bag/apps.py | &#9989; | [apps.py validation](TESTING/media/python_linter/validator-py-bag-apps.png) |
+| bag/contexts.py | &#9989; | [contexts.py validation](TESTING/media/python_linter/validator-py-bag-contexts.png) |
+| bag/urls.py | &#9989; | [urls.py validation](TESTING/media/python_linter/validator-py-bag-urls.png) |
+| bag/views.py | &#9989; | [views.py validation](TESTING/media/python_linter/validator-py-bag-views.png) |
+| bag/templatetags/bag_tools.py | &#9989; | [bag_tools.py validation](TESTING/media/python_linter/validator-py-bag-bag-tools.png)|
 | **CHECKOUT** |
-| checkout/admin.py | &#9989; | [admin.py validation]() |
-| checkout/apps.py | &#9989; | [apps.py validation]() |
-| checkout/forms.py | &#9989; | [forms.py validation]() |
-| checkout/models.py | &#9989; | [models.py validation]() |
-| checkout/signals.py | &#9989; | [signals.py validation]() |
-| checkout/urls.py | &#9989; | [urls.py validation]() |
-| checkout/views.py | &#9989; | [views.py validation]() |
-| checkout/webhook_handler.py | &#9989; | [webhook_handler.py]() |
-| checkout/webhooks.py | &#9989; | [webhooks.py]() |
-| checkout/test_forms.py | &#9989; | [test_forms.py validation]()|
-| checkout/test_models.py | &#9989; | [test_models.py validation]()|
-| checkout/test_views.py | &#9989; | [test_views.py validation]() |
+| checkout/admin.py | &#9989; | [admin.py validation](TESTING/media/python_linter/validator-py-checkout-admin.png) |
+| checkout/apps.py | &#9989; | [apps.py validation](TESTING/media/python_linter/validator-py-checkout-apps.png) |
+| checkout/forms.py | &#9989; | [forms.py validation](TESTING/media/python_linter/validator-py-checkout-forms.png) |
+| checkout/models.py | &#9989; | [models.py validation](TESTING/media/python_linter/validator-py-checkout-models.png) |
+| checkout/signals.py | &#9989; | [signals.py validation](TESTING/media/python_linter/validator-py-checkout-signals.png) |
+| checkout/urls.py | &#9989; | [urls.py validation](TESTING/media/python_linter/validator-py-checkout-urls.png) |
+| checkout/views.py | &#9989; | [views.py validation](TESTING/media/python_linter/validator-py-checkout-views.png) |
+| checkout/webhook_handler.py | &#9989; | [webhook_handler.py](TESTING/media/python_linter/validator-py-checkout-webhook-handler.png) |
+| checkout/webhooks.py | &#9989; | [webhooks.py](TESTING/media/python_linter/validator-py-checkout-webhook.png) |
+| checkout/test_models.py | &#9989; | [test_models.py validation](TESTING/media/python_linter/validator-py-checkout-test-models.png)|
 | **HOME** |
-| home/apps.py | &#9989; | [apps.py validation]() |
-| home/urls.py | &#9989; | [urls.py validation]()|
-| home/views.py | &#9989; | [views.py validation]() |
-| home/test_views.py | &#9989; | [test_views.py validation]() |
+| home/apps.py | &#9989; | [apps.py validation](TESTING/media/python_linter/validator-py-home-apps.png) |
+| home/urls.py | &#9989; | [urls.py validation](TESTING/media/python_linter/validator-py-home-urls.png)|
+| home/views.py | &#9989; | [views.py validation](TESTING/media/python_linter/validator-py-home-views.png) |
 | **PRODUCTS** |
-| products/admin.py | &#9989; | [admin.py validation]() |
-| products/apps.py | &#9989; | [apps.py validation]() |
-| products/forms.py | &#9989; | [forms.py validation]() |
-| products/models.py | &#9989; | [models.py validation]() |
-| products/urls.py | &#9989; | [urls.py validation]() |
-| products/views.py | &#9989; | [views.py validation]() |
-| products/widgets.py | &#9989; | [widgets.py validation]() |
-| products/test_models.py | &#9989; | [test_models.py validation]() |
-| products/test_views.py | &#9989; | [test_views.py validation]() |
+| products/admin.py | &#9989; | [admin.py validation](TESTING/media/python_linter/validator-py-products-admin.png) |
+| products/apps.py | &#9989; | [apps.py validation](TESTING/media/python_linter/validator-py-products-apps.png) |
+| products/forms.py | &#9989; | [forms.py validation](TESTING/media/python_linter/validator-py-products-forms.png) |
+| products/models.py | &#9989; | [models.py validation](TESTING/media/python_linter/validator-py-products-models.png) |
+| products/urls.py | &#9989; | [urls.py validation](TESTING/media/python_linter/validator-py-products-urls.png) |
+| products/views.py | &#9989; | [views.py validation](TESTING/media/python_linter/validator-py-products-views.png) |
+| products/widgets.py | &#9989; | [widgets.py validation](TESTING/media/python_linter/validator-py-products-widgets.png) |
+| products/test_models.py | &#9989; | [test_models.py validation](TESTING/media/python_linter/validator-py-products-test-models.png) |
 | **PROFILES** |
-| profiles/apps.py | &#9989; | [apps.py validation]() |
-| profiles/forms.py | &#9989; | [forms.py validation]() |
-| profiles/models.py | &#9989; | [models.py validation]() |
-| profiles/urls.py | &#9989; | [urls.py validation]() |
-| profiles/views.py | &#9989; | [views.py validation]() |
-| profiles/test_models.py | &#9989; | [test_models.py validation]() |
-| profiles/test_views.py | &#9989; | [test_views.py validation]() |
+| profiles/admin.py | &#9989; | [admin.py validation](TESTING/media/python_linter/validator-py-profiles-admin.png) |
+| profiles/apps.py | &#9989; | [apps.py validation](TESTING/media/python_linter/validator-py-profiles-apps.png) |
+| profiles/forms.py | &#9989; | [forms.py validation](TESTING/media/python_linter/validator-py-profiles-forms.png) |
+| profiles/models.py | &#9989; | [models.py validation](TESTING/media/python_linter/validator-py-profiles-models.png) |
+| profiles/urls.py | &#9989; | [urls.py validation](TESTING/media/python_linter/validator-py-profiles-urls.png) |
+| profiles/views.py | &#9989; | [views.py validation](TESTING/media/python_linter/validator-py-profiles-views.png) |
 
 
 ### Performance
@@ -759,7 +753,7 @@ _ _ _
     ![Image Fix](TESTING/media/bugs-fix-settings.png)
     ![Image Fix](TESTING/media/bugs-fix-heroku-vars.png)
 
-- This then fixed the issue with the email confirmation sending as well as the webhook payment intent failing.
+- This then fixed the issue with the email confirmation sending as well as the webhook payment intent passing.
 
     ![Image Fix](TESTING/media/bugs-fix-checkout-email-confirmation.png)
     ![Image Fix](TESTING/media/bugs-fix-payment-intent.png)
