@@ -749,11 +749,19 @@ _ _ _
 - When completing an order, an email confirmation would not be sent. The Stripe Payment Intent also retrieved an error 500.
 - These issues were linked together because the information was not being collected/sent properly.
 
-![Image Error](TESTING/media/bugs-error-payment-intent.png)
+    ![Image Error](TESTING/media/bugs-error-payment-intent.png)
     
-- The issue was that each time the icon was clicked and therefore changed as a favourite was added or removed the event listeners were still looking for the old icon. It was only after refreshing the page would the tooltip now show on mouse over.
-- While this worked ok, I knew it could work the way I wanted and should.
+- It appeared that I had issues with how my logic handled metadata, so I adjusted this but the problem persisted.
+- I then put the payment intent logic into a try/except and added logging errors, to the run the checkout again and be able to identify specifically where the issue was appearing in the payment intent logic.
+- The Heroku error log then showed that the EMAIL_FROM_ORDERS was not configured correctly which was causing the issue.
 
+    ![Image Fix](TESTING/media/bugs-fix-heroku-log.png)
+    ![Image Fix](TESTING/media/bugs-fix-settings.png)
+    ![Image Fix](TESTING/media/bugs-fix-heroku-vars.png)
 
-- By creating individual classes for both icons and specific functions for each class the page no longer needs to refresh for the mouse over to display the tooltip or vice versa.
-- It's a long-winded way of doing it for such a small feature, but it was important to me that it worked how I wanted it to. I am very pleased that it now works how it should.
+- This then fixed the issue with the email confirmation sending as well as the webhook payment intent failing.
+
+    ![Image Fix](TESTING/media/bugs-fix-checkout-email-confirmation.png)
+    ![Image Fix](TESTING/media/bugs-fix-payment-intent.png)
+
+- It was possible that the adjusted webhook_handler logic with the try/except and metadata handling wasn't needed, but it meant for more robust code so I kept it in place.

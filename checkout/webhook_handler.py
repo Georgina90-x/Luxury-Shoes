@@ -10,10 +10,6 @@ from profiles.models import UserProfile
 import stripe
 import json
 import time
-import logging
-import traceback
-
-logger = logging.getLogger(__name__)
 
 
 class StripeWH_Handler:
@@ -42,7 +38,6 @@ class StripeWH_Handler:
                 [cust_email]
             )
         except Exception as e:
-            logger.error(f"Failed to send confirmation email: {e}")
             raise Exception(f"Error sending confirmation email: {e}")
 
     def handle_event(self, event):
@@ -57,7 +52,7 @@ class StripeWH_Handler:
         """
         Handles payment_intent.succeeded webhook from Stripe
         """
-        try: 
+        try:
             intent = event.data.object
             pid = intent.id
             bag = intent.metadata.get('bag', '{}')
@@ -171,7 +166,6 @@ class StripeWH_Handler:
                 content=f'Webhook received: {event["type"]} | SUCCESS: \
                     Created order in webhook.', status=200)
         except Exception as e:
-            logger.error(f"Error processing payment_intent_succeeded webhook: {e}")
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | ERROR: {str(e)}',
                 status=500)
