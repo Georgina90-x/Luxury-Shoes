@@ -313,7 +313,8 @@ The following are credits to various people and technologies that have directly 
 | [Github](https://www.github.com) | Repository | Used to store work in repository. |
 | [Gitpod](https://www.gitpod.io) | Code Creation | Used to develop and write the application. |
 | [Heroku](https://www.heroku.com) | Deployment | Used to deploy the application. |
-| [Flaticon](ttps://www.flaticon.com/free-icons/shoe) | Favicon | Used as the favicon for the application. |
+| [Flaticon](https://www.flaticon.com/free-icons/shoe) | Favicon | Used as the favicon for the application. |
+| [Net Ninja](https://www.youtube.com/watch?v=yLhV1qCDFeU) | Coverage | Tutorial to help with Coverage testing. |
 | [LucidChart](https://www.lucid.app) | README | Used to create a Use Case & Database Schema Diagram. |
 | [Jaclyn Moy](https://unsplash.com/photos/womens-seven-assorted-color-footwear-on-surface-ugZxwLQuZec) | Homepage| Used as the background image on the homepage |
 | [1017043463441](https://www.vecteezy.com/photo/46562243-3d-rendering-pair-of-women-s-high-heels) | Products | Used as an image for black heels. |

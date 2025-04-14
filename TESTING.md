@@ -729,145 +729,31 @@ _ _ _
 ## Bugs
 _ _ _
 
-### Image2 Field Error
+### Internal Error 500
 
-- As some products have two images, I added an image2 field to the products model. For some reason the below error occurred if only an image was uploaded in the second field and not the first. 
+- When users tried to register or login/logout an 'Internal Error 500' appeared. 
 
-    ![Image Error](documentation/testing/image-error.png)
+    ![Image Error](TESTING/media/bugs-signup-error.png)
 
-- I tried to adjust the code to ignore the field if it was empty but couldn't find a way to make it work.
-- To ensure no image is uploaded to the second image field before the first I used javascript to hide the image2 fields unless the first image field has a value.
+- This seemed to be related to the email verification as the registration would be successful in the database but would not send an email for users to verify, which is why the error was appearing. This was related to the versions of python/django and their support of 'keyfile' and smtp.
+- I was hesitant to adjust the version of Django, to prevent database issues, so I opted for changing my Python version from 3.12 to 3.11 and this resolved the issue.
 
-    ```Javascript
-        document.addEventListener('DOMContentLoaded', function() {
-        const newImageInput = document.getElementById('new-image');
-        const newImage2Input = document.getElementById('new-image2');
-        const imageButton = document.getElementById('image2-button');
-        const imageUrl = document.getElementById('div_id_image2_url');
-        
-            if (!newImageInput) {
-                return;
-            }
-        
-            newImageInput.addEventListener('change', function() {
-                if (newImageInput.value) {
-                    newImage2Input.disabled = false;
-                    imageButton.hidden = false;
-                    imageUrl.hidden = false;
-                } else {
-                    newImage2Input.disabled = true;
-                    imageButton.hidden = true;
-                    imageUrl.hidden = true;
-                }
-            });
+    ![Image Fix](TESTING/media/bugs-signup-fix.png)
+    ![Image Fix](TESTING/media/bugs-fix-verify-email.png)
+    ![Image Fix](TESTING/media/bugs-fix-confirmed-email.png)
+    
 
-            if (!newImageInput.value) {
-            newImage2Input.disabled = true;
-            imageButton.hidden = true;
-            imageUrl.hidden = true;
-            }
-        });
-    ```
 
-### Tooltip
+### Checkout Email Confirmation/ Stripe Payment Intent Webhook Error 500
 
-- I could not get the bootstrap tooltip to work, followed everything for the correct Bootstrap version, but for some reason it would not work. I took it on myself to create one as I really wanted this feature for the star / favourite icon.
-- This is the code I originally used.
+- When completing an order, an email confirmation would not be sent. The Stripe Payment Intent also retrieved an error 500.
+- These issues were linked together because the information was not being collected/sent properly.
 
-    ```Javascript
-        var star = document.querySelector('.fa-star');
-        var tool = document.querySelector('.tool');
-
-        star.addEventListener('mouseover', function() {
-            tool.style.visibility = 'visible';
-        });
-
-        star.addEventListener('mouseout', function() {
-            tool.style.visibility = 'hidden';
-        });    
-    ```
+![Image Error](TESTING/media/bugs-error-payment-intent.png)
+    
 - The issue was that each time the icon was clicked and therefore changed as a favourite was added or removed the event listeners were still looking for the old icon. It was only after refreshing the page would the tooltip now show on mouse over.
 - While this worked ok, I knew it could work the way I wanted and should.
-- Below is the new working code.
 
-    ```Javascript
-        const addStar = document.querySelector('.add');
-        const removeStar = document.querySelector('.remove');
-        const toolOne = document.querySelector('.tool1');
-        const toolTwo = document.querySelector('.tool2');
-
-        function toggleVisibility(element, isVisible) {
-            element.style.visibility = isVisible ? 'visible' : 'hidden';
-        }
-
-        function handleMouseOver(event) {
-            const target = event.target;
-            if (target === addStar) {
-            toggleVisibility(toolOne, true);
-            } else if (target === removeStar) {
-            toggleVisibility(toolTwo, true);
-            }
-        }
-
-        function handleMouseOut(event) {
-            const target = event.target;
-            if (target === addStar) {
-            toggleVisibility(toolOne, false);
-            } else if (target === removeStar) {
-            toggleVisibility(toolTwo, false);
-            }
-        }
-
-        document.addEventListener('mouseover', handleMouseOver);
-        document.addEventListener('mouseout', handleMouseOut);
-    ```
 
 - By creating individual classes for both icons and specific functions for each class the page no longer needs to refresh for the mouse over to display the tooltip or vice versa.
 - It's a long-winded way of doing it for such a small feature, but it was important to me that it worked how I wanted it to. I am very pleased that it now works how it should.
-
-### Stock Level - 0
-
-- Product detial page displays stock as an alert when stock is 3 or below if it is at zero there is no display.
-- This is the code used;
-
-    ```Python
-        {% if product.stock %}
-            {% if product.stock < 4 %}
-                <div class="col-12 stock-level text-danger">
-                    <p><strong>Low stock! Only {{ product.stock }} left!</strong></p>
-                </div>
-            {% endif %}
-        {% endif %}
-    ```
-- This code was then tried which did not work, still no display if 0;
-
-    ```Python
-        {% if product.stock %}
-            {% if product.stock == 0 %}
-                <div class="col-12 stock-level text-danger">
-                    <p><strong>OUT OF STOCK!</strong></p>
-                </div>
-            {% elif product.stock < 4 %}
-                <div class="col-12 stock-level text-danger">
-                    <p><strong>Low stock! Only {{ product.stock }} left!</strong></p>
-                </div>
-            {% endif %}
-        {% endif %}
-    ```
-
-- In the end writing two separate if statements worked.
-
-    ```Python
-        {% if product.stock %}
-            {% if product.stock < 4 %}
-                <div class="col-12 stock-level text-danger">
-                    <p><strong>Low stock! Only {{ product.stock }} left!</strong></p>
-                </div>
-            {% endif %}
-        {% endif %}
-        {% if product.stock == 0 %}
-                <div class="col-12 stock-level text-danger">
-                    <p><strong>OUT OF STOCK!</strong></p>
-                </div>
-        {% endif %}
-    ```

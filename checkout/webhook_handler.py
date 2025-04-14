@@ -10,6 +10,8 @@ from profiles.models import UserProfile
 import stripe
 import json
 import time
+import logging
+import traceback
 
 
 class StripeWH_Handler:
@@ -51,8 +53,8 @@ class StripeWH_Handler:
         """
         intent = event.data.object
         pid = intent.id
-        bag = intent.metadata.bag
-        save_info = intent.metadata.save_info
+        bag = intent.metadata.get('bag', '{}')
+        save_info = intent.metadata.get('save_info', False)
 
         print("Received metadata:", intent.metadata) # debugging
 
@@ -71,17 +73,17 @@ class StripeWH_Handler:
 
         # Update profile information if save_info was checked
         profile = None
-        username = intent.metadata.username
+        username = intent.metadata.get('username', 'AnonymousUser')
         if username != 'AnonymousUser':
             profile = UserProfile.objects.get(user__username=username)
             if save_info:
-                profile.default_street_address1 = shipping_details.address.line1
-                profile.default_street_address2 = shipping_details.address.line2
-                profile.default_town_or_city = shipping_details.address.city
-                profile.default_county = shipping_details.address.state
-                profile.default_postcode = shipping_details.address.postal_code
-                profile.default_country = shipping_details.address.country
-                profile.default_phone_number = shipping_details.phone
+                profile.default_street_address1 = shipping_details.get('address', {}).get('line1')
+                profile.default_street_address2 = shipping_details.get('address', {}).get('line2')
+                profile.default_town_or_city = shipping_details.get('address', {}).get('city')
+                profile.default_county = shipping_details.get('address', {}).get('state')
+                profile.default_postcode = shipping_details.get('address', {}).get('postal_code')
+                profile.default_country = shipping_details.get('address', {}).get('country')
+                profile.default_phone_number = shipping_details.get('phone')
                 profile.save()
 
         order_exists = False
@@ -89,15 +91,15 @@ class StripeWH_Handler:
         while attempt <= 5:
             try:
                 order = Order.objects.get(
-                    full_name__iexact=shipping_details.name,
-                    email__iexact=billing_details.email,
-                    street_address1__iexact=shipping_details.address.line1,
-                    street_address2__iexact=shipping_details.address.line2,
-                    town_or_city__iexact=shipping_details.address.city,
-                    county__iexact=shipping_details.address.state,
-                    postcode__iexact=shipping_details.address.postal_code,
-                    country__iexact=shipping_details.address.country,
-                    phone_number__iexact=shipping_details.phone,
+                    full_name__iexact=shipping_details.get('name', ''),
+                    email__iexact=billing_details.get('email', ''),
+                    street_address1__iexact=shipping_details.get('address', {}).get('line1', ''),
+                    street_address2__iexact=shipping_details.get('address', {}).get('line2', ''),
+                    town_or_city__iexact=shipping_details.get('address', {}).get('city', ''),
+                    county__iexact=shipping_details.get('address', {}).get('state', ''),
+                    postcode__iexact=shipping_details.get('address', {}).get('postal_code', ''),
+                    country__iexact=shipping_details.get('address', {}).get('country', ''),
+                    phone_number__iexact=shipping_details.get('phone', ''),
                     grand_total=grand_total,
                     original_bag=bag,
                     stripe_pid=pid,
@@ -117,16 +119,17 @@ class StripeWH_Handler:
             order = None
             try:
                 order = Order.objects.create(
-                            full_name=shipping_details.name,
+                            full_name=shipping_details.get('name', ''),
                             user_profile=profile,
-                            email=billing_details.email,
-                            street_address1=shipping_details.address.line1,
-                            street_address2=shipping_details.address.line2,
-                            town_or_city=shipping_details.address.city,
-                            county=shipping_details.address.state,
-                            postcode=shipping_details.address.postal_code,
-                            country=shipping_details.address.country,
-                            phone_number=shipping_details.phone,
+                            email=billing_details.get('email', ''),
+                            street_address1=shipping_details.get('address', {}).get('line1', ''),
+                            street_address2=shipping_details.get('address', {}).get('line2', ''),
+                            town_or_city=shipping_details.get('address', {}).get('city', ''),
+                            county=shipping_details.get('address', {}).get('state', ''), 
+                            postcode=shipping_details.get('address', {}).get('postal_code', ''),
+                            country=shipping_details.get('address', {}).get('country', ''),
+                            phone_number=shipping_details.get('phone', ''),
+                            grand_total=grand_total,
                             original_bag=bag,
                             stripe_pid=pid,
                         )
