@@ -221,10 +221,6 @@ if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     # Default email for no reply
     DEFAULT_FROM_EMAIL = "noreply@luxuryshoes.com"
-    # Custom email addresses for different types of emails
-    EMAIL_FROM_ORDERS = "orders@luxuryshoes.com"
-    EMAIL_FROM_SUPPORT = "support@luxuryshoes.com"
-    EMAIL_FROM_MARKETING = "marketing@luxuryshoes.com"
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True
@@ -233,3 +229,8 @@ else:
     EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASS')
     DEFAULT_FROM_EMAIL = os.getenv('EMAIL_HOST_USER')
+
+# These apply in both dev and production
+EMAIL_FROM_ORDERS = os.getenv('EMAIL_FROM_ORDERS', DEFAULT_FROM_EMAIL)
+EMAIL_FROM_SUPPORT = os.getenv('EMAIL_FROM_SUPPORT', DEFAULT_FROM_EMAIL)
+EMAIL_FROM_MARKETING = os.getenv('EMAIL_FROM_MARKETING', DEFAULT_FROM_EMAIL)
