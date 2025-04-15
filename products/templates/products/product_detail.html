@@ -16,7 +16,7 @@
             <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
                 <div class="image-container my-5">
                     {% if product.image %}
-                        <a href="{{ product.image.url }}" target="_blank">
+                        <a href="{{ product.image.url }}" target="_blank" aria-label="View larger image of {{ product.name }}">
                             <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                         </a>
                         {% else %}
@@ -98,7 +98,8 @@
                             {% if s %}
                                 <div class="col-12">
                                     <p><strong>Size:</strong></p>
-                                    <select class="form-control rounded-lg w-50" name="product_size" id="id_product_size">
+                                    <label for="id_product_size" class="sr-only">Select Size</label>
+                                    <select class="form-control rounded-lg w-50" name="product_size" id="id_product_size" aria-label="Select Size">
                                         <option value="2.5">UK 2.5/ US 5</option>
                                         <option value="3">UK 3/ US 5.5</option>
                                         <option value="3.5">UK 3.5/ US 6</option>
@@ -122,17 +123,18 @@
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <button class="decrement-qty btn btn-taupe rounded"
-                                                data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}">
+                                                data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}" aria-label="Decrease Quantity">
                                                 <span class="icon">
                                                     <i class="fas fa-minus"></i>
                                                 </span>
                                             </button>
                                         </div>
+                                        <label for="id_qty_{{ product.id }}" class="sr-only">Quantity</label>
                                         <input class="form-control qty_input" type="number" name="quantity" value="1"
-                                            min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
+                                            min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}" aria-label="Quantity">
                                         <div class="input-group-append">
                                             <button class="increment-qty btn btn-taupe rounded"
-                                                data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
+                                                data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}" aria-label="Increase Quantity">
                                                 <span class="icon">
                                                     <i class="fas fa-plus"></i>
                                                 </span>
