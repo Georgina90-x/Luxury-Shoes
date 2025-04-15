@@ -313,7 +313,7 @@ The website was tested on the following devices:
 - Android Phone
 - iPhone 15 Pro
 
-In addition, the website was tested using Google Chrome Developer Tools device toggle option for mobile development.
+In addition, during development Google Developer Tools were used to make sure the website was built in a mobile friendly manner.
 
 ### Browser Compatibility
 
@@ -327,8 +327,8 @@ The website was tested on the following browsers:
 | Feature | Testing Performed | &#9989; (Pass) / &#10060; (Fail) |
 | --- | --- | --- |
 | Register | Sign up and email confirmation working | &#9989; |
-| Login / Logout | Both functions work correctly | &#9989; |
-| Forgot Password | Reset and email links all work correctly | &#9989; |
+| Login / Logout | Both functions work as intended | &#9989; |
+| Forgot Password | Reset and email links all work as intended | &#9989; |
 | Links | Check all links navigate correctly | &#9989; |
 | Buttons | Check all buttons function correctly | &#9989; |
 | Search Bar | Check search criteria works | &#9989; |
@@ -336,24 +336,20 @@ The website was tested on the following browsers:
 | Product Links | Products link to correct product detail | &#9989; |
 | Product Edit | Edits and updates correct product | &#9989; |
 | Product Add | Adds product and its details correctly | &#9989; |
+| Product Edit Modal | Button calls modal, modal deletes product | &#9989; |
 | Product Delete Modal | Button calls modal, modal deletes product | &#9989; |
 | Image On Click | Links work correctly, open new window | &#9989; |
-| Image1 upload | Image uploads and displays correctly | &#9989; |
-| Size / Price | Price changes depending on size selected | &#9989; |
-| Stock Level Updates | Stock display correctly displays stock level | &#9989; |
+| Image upload | Image uploads and displays correctly | &#9989; |
+| Size Selection | Size updates to size selected | &#9989; |
 | Quantity Updates | Quantity updates from product and bag view | &#9989; |
-| Add / Remove Favourites Icon | Adds and removes favourites correclty | &#9989; |
-| Remove Favourites Modal | Button calls modal, modal removes product | &#9989; |
-| Contact Admin | Contact form delivers message to admin | &#9989; |
-| Contact Emails | Emails are sent to both user and store email | &#9989; |
 | Add to Bag | Correct items add to bag | &#9989; |
 | Update Bag | Correctly update items in bag | &#9989; |
+| Toasts | Toasts appear when adding, removing and updating bag as well as signing in and out of the site | &#9989; |
 | Checkout | Bag items displayed in checkout | &#9989; |
 | Payment | Stripe payment received | &#9989; | 
-| Purchase | Webhooks sent and all working | &#9989; |
+| Purchase | Webhooks sent and all working without errors| &#9989; |
 | Checkout emails | Confirmation emails delivered with correct order information | &#9989; |
 | Profile Page | Personal information and order history displays correctly | &#9989; |
-| Social Links | Links work correctly, open new window | &#9989; |
 
 
 ### Testing User Stories
@@ -370,13 +366,13 @@ _ _ _
     | All products  | Click drop down link  | Go to all products | Works as expected |
 
     <details><summary>Shoes</summary>
-    <img src="">
+    <img src="TESTING/media/user_stories/user-stories-shoes.png">
     </details>
     <details><summary>Accessories</summary>
-    <img src="">
+    <img src="TESTING/media/user_stories/user-stories-accessories.png">
     </details>
      <details><summary>All Products</summary>
-    <img src="">
+    <img src="TESTING/media/user_stories/user-stories-all-products.png">
     </details>
     <br>
 
@@ -388,7 +384,10 @@ _ _ _
     | Sub category nav link | Click link | Go to specified category page | Works as expected |
 
     <details><summary>View Category</summary>
-    <img src="">
+    <img src="TESTING/media/user_stories/user-stories-all-products.png">
+    </details>
+    <details><summary>View Sub Category</summary>
+    <img src="TESTING/media/user_stories/user-stories-subcategory.png">
     </details>
     <br>
 
@@ -399,7 +398,7 @@ _ _ _
     | View product detail | Click on product | View product detail page | Works as expected |
 
     <details><summary>Product Detail</summary>
-    <img src="">
+    <img src="TESTING/media/user_stories/user-stories-size-qty.png">
     </details>
     <br>
 
@@ -410,7 +409,7 @@ _ _ _
     | View shopping bag | Click on bag | Shopping bag total displayed | Works as expected |
 
     <details><summary>View Shopping Bag</summary>
-    <img src="">
+    <img src="TESTING/media/user_stories/user-stories-shopping-bag.png">
     </details>
     <br>
 
@@ -423,7 +422,7 @@ _ _ _
     | Register | Click register | View register page | Works as expected |
 
     <details><summary>Register</summary>
-    <img src="">
+    <img src="TESTING/media/user_stories/user-stories-signup.png">
     </details>
     <br>
 
@@ -435,10 +434,10 @@ _ _ _
     | Logout | Click logout | To sign user out | Works as expected |
 
     <details><summary>Login</summary>
-    <img src="">
+    <img src="TESTING/media/user_stories/user-stories-login.png">
     </details>
     <details><summary>Logout</summary>
-    <img src="">
+    <img src="TESTING/media/user_stories/user-stories-logout.png">
     </details>
 
     <br>
@@ -448,9 +447,13 @@ _ _ _
     | **Feature** | **Action** | **Expected Result** | **Actual Result** |
     |-------------|------------|---------------------|-------------------|
     | Recover Password | Click forgot password | To recover password | Works as expected |
+    | Recover Password Email | Click forgot password | Receive email to recover | Works as expected |
 
     <details><summary>Recover Password</summary>
-    <img src="">
+    <img src="TESTING/media/user_stories/user-stories-forgot-password.png">
+    </details>
+    <details><summary>Recover Password Email</summary>
+    <img src="TESTING/media/user_stories/user-stories-forgot-password-email.png">
     </details>
     <br>
 
@@ -458,29 +461,10 @@ _ _ _
 
     | **Feature** | **Action** | **Expected Result** | **Actual Result** |
     |-------------|------------|---------------------|-------------------|
-    | Forgotten password | Click 'Forgotten Password?' link | Go to reset password confirmation page | Works as expected |
     | Confirm email | Confirm email on the account | Go to reset link email confirmation page | Works as expected |
-    | Reset link | Click link | Go to reset password page | Works as expected |
-    | New password | Enter new password | Confirm new password | Works as expected |
-    | New password confirmed | Click 'change password' button | New password confirmed | Works as expected |
 
-    <details><summary>Forgotten Password</summary>
-    <img src="">
-    </details>
-    <details><summary>Confirm Email</summary>
-    <img src="">
-    </details>
-    <details><summary>Confirmation email Page</summary>
-    <img src="">
-    </details>
-    <details><summary>Reset Link</summary>
-    <img src="">
-    </details>
-    <details><summary>Enter New Password</summary>
-    <img src="">
-    </details>
-    <details><summary>New Password Confirmation</summary>
-    <img src="">
+    <details><summary>Confirmation Email Page</summary>
+    <img src="TESTING/media/user_stories/user-stories-register-email.png">
     </details>
     <br>
 
@@ -492,7 +476,7 @@ _ _ _
 
 
     <details><summary>Profile</summary>
-    <img src="">
+    <img src="TESTING/media/user_stories/user-stories-profile.png">
     </details>
     <br>
 
@@ -503,17 +487,13 @@ _ _ _
     | **Feature** | **Action** | **Expected Result** | **Actual Result** |
     |-------------|------------|---------------------|-------------------|
     | Add to basket | Click add to basket | Product added to basket | Works as expected |
-    | Close website window | Click close window | Closed window | Works as expected |
     | Shopping bag populated | Open website and navigate to shopping bag | Product still in basket| Works as expected |
 
     <details><summary>Add to Basket</summary>
-    <img src="">
-    </details>
-    <details><summary>Close Website</summary>
-    <img src="">
+    <img src="TESTING/media/user_stories/user-stories-add-to-bag.png">
     </details>
     <details><summary>Shopping Bag Populated</summary>
-    <img src="">
+    <img src="TESTING/media/user_stories/user-stories-populated-bag.png">
     </details>
     <br>
 
@@ -524,7 +504,7 @@ _ _ _
     | Categories | Click Shoe/ Accessories dropdown | Show relevant product pages | Works as expected |
 
     <details><summary>Categories</summary>
-    <img src="">
+    <img src="TESTING/media/user_stories/user-stories-subcategory.png">
     </details>
     <br>
 
@@ -536,7 +516,7 @@ _ _ _
     | Sort Products | Click on sort products dropdown | Products sorted by rating, category, price | Works as expected |
 
     <details><summary>Sort Products</summary>
-    <img src="">
+    <img src="TESTING/media/user_stories/user-stories-sorting.png">
     </details>
     <br>
 
@@ -548,7 +528,7 @@ _ _ _
 
 
     <details><summary>Search Products</summary>
-    <img src="">
+    <img src="TESTING/media/user_stories/user-stories-search.png">
     </details>
     <br>
 
@@ -559,162 +539,146 @@ _ _ _
     | Search Results | Click search | View products relevant to search criteria | Works as expected |
 
     <details><summary>Search Results</summary>
-    <img src="">
+    <img src="TESTING/media/user_stories/user-stories-search.png">
     </details>
     <br>
 
 **Purchasing & Checkout**
 
-15. As a shopper I want to be able to sort multiple categories of products simultaneously so that I can find the best-priced across the broad categories, such as 'photography' or 'Film'.
+15. As a shopper I want to be able to select the size and quantity of a product I want to purchase so that I can make a purchase that fulfills my needs.
 
     | **Feature** | **Action** | **Expected Result** | **Actual Result** |
     |-------------|------------|---------------------|-------------------|
-    | Search broad category | Select by name or price | View alphabetically or by price | Works as expected |
+    | Size & Quantity Selector | Select size and quantity | Size and Quantity selector and dropdown appears | Works as expected |
 
-    <details><summary>Broad Category Search</summary>
-    <img src="">
+    <details><summary>Size and Quantity Selector</summary>
+    <img src="TESTING/media/user_stories/user-stories-size-qty.png">
     </details>
     <br>
 
-16. As a shopper I want to be able to search for a poster by name or description so that I can find a specific product I'd like to purchase.
+16. As a shopper I want to be able to view items that are in my shopping bag so that I can check that my shopping bag contains what I want and view a detailed price breakdown showing the total costs.
 
     | **Feature** | **Action** | **Expected Result** | **Actual Result** |
     |-------------|------------|---------------------|-------------------|
-    | Search by name | Enter name | Name search results displayed | Works as expected |
-    | Search by description | Enter description | Description search results displayed | Works as expected |
+    | Shopping Bag | Click shopping bag | Shopping bag table with products shown | Works as expected |
 
-    <details><summary>Search Name</summary>
-    <img src="">
-    </details>
-    <details><summary>Search Description</summary>
-    <img src="">
+    <details><summary>Shopping Bag</summary>
+    <img src="TESTING/media/user_stories/user-stories-shopping-bag.png">
     </details>
     <br>
 
-17. As a shopper I want to be able to easily see what I've searched for and the number of results so that I can quickly decide whether the product I want is available.
+17. As a shopper I want to be able to adjust the quantity of individual items in my bag so that I can make changes to the quantity without navigating away from the checkout. 
 
     | **Feature** | **Action** | **Expected Result** | **Actual Result** |
     |-------------|------------|---------------------|-------------------|
-    | View search results | Search for multiple posters | Search results and number displayed | Works as expected |
+    | Quantity Adjustment In Bag | Adjust quantity in bag | Quantity adjusts | Works as expected |
 
-    <details><summary>View Search Results</summary>
-    <img src="">
+    <details><summary>Quantity Adjustment In Bag</summary>
+    <img src="TESTING/media/user_stories/user-stories-adjust-qty.png">
     </details>
     <br>
 
-18. As a shopper I want to be able to easily select the size and quantity of a poster when purchasing it so that I can ensure I don't accidentally select the wrong poster, quantity or size.
+18. As a shopper I want to be able to enter my payment information so that I can pay for the products I've chosen to buy.
 
     | **Feature** | **Action** | **Expected Result** | **Actual Result** |
     |-------------|------------|---------------------|-------------------|
-    | Select Size / Quantity | Select size and / or quantity on product detail page | Size and Quantity changes on selection | Works as expected |
+    | Payment Form | Input payment details to process transaction | Payment processes | Works as expected |
 
-    <details><summary>Select Size / Quantity</summary>
-    <img src="">
+    <details><summary>Payment Form</summary>
+    <img src="TESTING/media/user_stories/user-stories-payment-form.png">
     </details>
     <br>
 
-19. As a shopper I want to be able to view items in my bag to purchase so that I can identify the total cost of my purchase and all items I will receive.
+19. As a shopper I want to be able to checkout securely with no risk so that I can provide the sensitive information needed to purchase the products with confidence.
 
     | **Feature** | **Action** | **Expected Result** | **Actual Result** |
     |-------------|------------|---------------------|-------------------|
-    | View cart | Click on cart icon | View cart with selected items in it | Works as expected |
-
-    <details><summary>View Cart</summary>
-    <img src="">
-    </details>
-    <br>
-
-20. As a shopper I want to be able to adjust the quantity of individual items in my bag so that I can easily make changes to my purchases before checkout.
-
-    | **Feature** | **Action** | **Expected Result** | **Actual Result** |
-    |-------------|------------|---------------------|-------------------|
-    | Adjust Quantity in Cart | Change quantity with selector, click update | Quantity is updated | Works as expected |
-
-    <details><summary>Adjust Quantity</summary>
-    <img src="">
-    </details>
-    <br>
-
-21. As a shopper I want to be able to easily enter my payment information so that I can check out quickly and with no hassles.
-
-    | **Feature** | **Action** | **Expected Result** | **Actual Result** |
-    |-------------|------------|---------------------|-------------------|
-    | Information Form | Fil out form | Clearly labelled form to fill out | Works as expected |
-
-    <details><summary>View Checkout From</summary>
-    <img src="">
-    </details>
-    <br>
-
-**Admin & Store Management**
-
-22. As a shopper I want to be able to feel my personal payment information is safe and secure so that I can confidently provide the needed information to make a purchase.
-
-    | **Feature** | **Action** | **Expected Result** | **Actual Result** |
-    |-------------|------------|---------------------|-------------------|
-    | Secure Checkout | Click secure checkout button | View payment is via stripe (footer) | Works as expected |
-    | Secure Checkout | Click secure checkout button | Information only populated if logged in and saved to profile | Works as expected |
+    | Secure Checkout | Click on secure payment | Checkout form appears | Works as expected |
 
     <details><summary>Secure Checkout</summary>
-    <img src="">
+    <img src="TESTING/media/user_stories/user-stories-payment-form.png">
     </details>
     <br>
 
-23. As a shopper I want to be able to view an order confirmation after checkout so that I can verify that I haven't made any mistakes.
+20. As a shopper I want to be able to see an order confirmation so that I can check that the order is correct.
 
     | **Feature** | **Action** | **Expected Result** | **Actual Result** |
     |-------------|------------|---------------------|-------------------|
-    | Make Payment | Click 'buy now' button | Checkout Success page confirms order | Works as expected |
+    | Checkout Success | Submit checkout form | Order processes and confirmation appears | Works as expected |
 
-    <details><summary>Make Payment</summary>
-    <img src="">
+    <details><summary>Checkout Success</summary>
+    <img src="TESTING/media/user_stories/user-stories-checkout-success.png">
     </details>
     <br>
 
-24. As a shopper I want to be able to receive an email confirmation after checking out so that I can keep the confirmation of what I've purchased for my records.
+21. As a shopper I want to be able to receive an email confirmation so that I can safely store the order in my mail as reference.
 
     | **Feature** | **Action** | **Expected Result** | **Actual Result** |
     |-------------|------------|---------------------|-------------------|
-    | Make Payment | Click 'buy now' button | Checkout Success page confirms order | Works as expected |
-    | Confirmation Email | Click 'buy now' button | Order confirmation email confirms order | Works as expected |
+    | Email Order Confirmation | Submit Order | User receives email confirmation | Works as expected |
 
-    <details><summary>Make Payment</summary>
-    <img src="">
-    </details>
-    <details><summary>Order Confirmation Email</summary>
-    <img src="">
+    <details><summary>Email Order Confirmation</summary>
+    <img src="TESTING/media/user_stories/user-stories-order-confirm-email.png">
     </details>
     <br>
 
 **Admin & Store Management**
 
-25. As a store owner I want to be able to add a poster so that I can upload new posters for sale to my store.
+22. As a store owner I want to be able to add a product so that I can add new products to the store for customers to shop.
 
     | **Feature** | **Action** | **Expected Result** | **Actual Result** |
     |-------------|------------|---------------------|-------------------|
-    | Add Product Page | Click Manage Items | Go to add product page | Works as expected |
-    | Add Product | Fill out form, add product | New product is added | Works as expected |
+    | Add Product | Fill out form and add product | Product is added to website | Works as expected |
 
-    <details><summary>Add Product Page</summary>
-    <img src="">
-    </details>
     <details><summary>Add Product</summary>
-    <img src="">
+    <img src="TESTING/media/user_stories/user-stories-add-product.png">
     </details>
     <br>
 
-26. As a store owner I want to be able to edit/update a poster so that I can change product prices, descriptions, sizes, images, stock and other product criteria.
+23. As a store owner I want to be able to Edit/Update a product so that I can edit/update details of products such as price, description, image, rating etc.
 
     | **Feature** | **Action** | **Expected Result** | **Actual Result** |
     |-------------|------------|---------------------|-------------------|
-    | Edit Product Page | Click edit button | Go to edit product page | Works as expected |
-    | Edit Product | Fill out form, edit product | Edited product is update | Works as expected |
+    | Edit/Update Product | Fill in edit product form | Product updates with changes | Works as expected |
 
-    <details><summary>Edit Product Page</summary>
-    <img src="documentation/testing/stories/edit-product-page.gif">
+    <details><summary>Edit/Update Product</summary>
+    <img src="TESTING/media/user_stories/user-stories-edit-product.png">
     </details>
-    <details><summary>Edit Product</summary>
-    <img src="documentation/testing/stories/edit-product.gif">
+    <br>
+
+24. As a store owner I want to be able to delete a product so that I can remove products that are no longer available for sale.
+
+    | **Feature** | **Action** | **Expected Result** | **Actual Result** |
+    |-------------|------------|---------------------|-------------------|
+    | Delete Product | Click delete product | Product is removed from website | Works as expected |
+
+    <details><summary>Delete Product</summary>
+    <img src="TESTING/media/user_stories/user-stories-delete-product.png">
+    </details>
+    <details><summary>Delete Product Modal</summary>
+    <img src="TESTING/media/user_stories/user-stories-delete-product-modal.png">
+    </details>
+    <br>
+
+25. As a store owner I want to be able to manage products in one place so that I can easily make necessary amendments without navigating to different areas of the site.
+
+    | **Feature** | **Action** | **Expected Result** | **Actual Result** |
+    |-------------|------------|---------------------|-------------------|
+    | Product Management | Click Product Management | Go to Product Management | Works as expected |
+
+    <details><summary>Product Management</summary>
+    <img src="TESTING/media/user_stories/user-stories-product-management.png">
+    </details>
+    <br>
+
+26. As a store owner I want to be able to send marketing emails to users so that I can send promotional emails to registered users and drive sales.
+
+    | **Feature** | **Action** | **Expected Result** | **Actual Result** |
+    |-------------|------------|---------------------|-------------------|
+    | Marketing Email | Fill Marketing Email Form | Sends Marketing Email | Works as expected |
+
+    <details><summary>Marketing Email</summary>
+    <img src="TESTING/media/user_stories/user-stories-marketing-email.png">
     </details>
     <br>
 

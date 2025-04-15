@@ -140,12 +140,12 @@ I have used CSS `:root` variables to easily update the global colour scheme by c
 | **ID** | **As A** | **I Want To Be Able To** | **So That I Can** |
 |-------------|------------|---------------------|-------------------|
 | 15 | Shopper | Select the size and quantity of a product I want to purchase | Make a purchase that fulfills my needs |
-| 16 | Shopper | View items that are in my shopping bag | To check that my shopping bag contains what I want and view a detailed price breakdown showing the total costs |
+| 16 | Shopper | View items that are in my shopping bag | Check that my shopping bag contains what I want and view a detailed price breakdown showing the total costs |
 | 17 | Shopper | Adjust the quantity of individual items in my bag | Make changes to the quantity without navigating away from the checkout |
-| 18 | Shopper | Enter my payment information | Check out quickly and with no hassle |
-| 19 | Shopper | Checkout securely with no risk | Provide the sensitive information needed to purchase the products |
+| 18 | Shopper | Enter my payment information | Pay for the products I've chosen to buy.|
+| 19 | Shopper | Checkout securely with no risk | Provide the sensitive information needed to purchase the products with confidence |
 | 20 | Shopper | See an order confirmation | Check that the order is correct |
-| 21 | Shopper | Receive an email confirmation | To safely store the order in my mail as reference |
+| 21 | Shopper | Receive an email confirmation | Safely store the order in my mail as reference |
 
 | **Admin & Store Management** |
 |-------------|
