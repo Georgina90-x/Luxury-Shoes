@@ -1,6 +1,6 @@
 # Luxury Shoes Testing
 
-![Mockup image]()
+![Website Image]()
 
 [Live webpage](https://luxury-shoes-00974b0f1528.herokuapp.com/)
 
