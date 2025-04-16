@@ -57,3 +57,20 @@ button {
 button:hover {
     background: #0056b3;
 }
+
+/* Login Page Styling */
+.button.secondaryAction {
+    background-color: #004085; /* dark blue background */
+    color: #ffffff; /* white text */
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+  }
+  
+  .button.secondaryAction:hover,
+  .button.secondaryAction:focus {
+    background-color: #003366; /* even darker on hover/focus */
+    outline: 2px solid #ffffff; /* visible focus outline */
+    outline-offset: 2px;
+  }
+  
