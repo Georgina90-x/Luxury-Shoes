@@ -313,6 +313,7 @@ The following are credits to various people and technologies that have directly 
 | [Github](https://www.github.com) | Repository | Used to store work in repository. |
 | [Gitpod](https://www.gitpod.io) | Code Creation | Used to develop and write the application. |
 | [Heroku](https://www.heroku.com) | Deployment | Used to deploy the application. |
+| [Github - Code Institute](https://github.com/Code-Institute-Solutions/boutique_ado_v1_sourcecode) | Project | Used to as a base for the Luxury Shoes Application. |
 | [Flaticon](https://www.flaticon.com/free-icons/shoe) | Favicon | Used as the favicon for the application. |
 | [Net Ninja](https://www.youtube.com/watch?v=yLhV1qCDFeU) | Coverage | Tutorial to help with Coverage testing. |
 | [LucidChart](https://www.lucid.app) | README | Used to create a Use Case & Database Schema Diagram. |

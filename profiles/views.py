@@ -1,7 +1,7 @@
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -60,6 +60,10 @@ def order_history(request, order_number):
 
 @login_required
 def send_marketing_email(request):
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry you do not have permission to do that.')
+        return redirect(reverse('home'))
+
     if request.method == "POST":
         subject = request.POST.get("subject", "Special Offer Just for You!")
         message = request.POST.get("message", "Check out our latest products!")
