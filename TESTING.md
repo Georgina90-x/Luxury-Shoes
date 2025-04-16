@@ -173,110 +173,96 @@ Base.css had one error which I researched into. It was found that font-optical-s
 
 ### Performance
 
-Performance testing was done using lighthouse in chrome developer tools testing the performance, accessibility, best practices, and SEO of the website. Some of the scores are lower than I'd like them to be, this is down mainly to resources blocking the first paint of the page. This is something with more time I'd like to read up on and gain a better understanding but due to time constraints I am happy with the current scores.
-<br>
-<details><summary>First Paint Message Example</summary>
-<img src="documentation/testing/lighthouse/lighthouse-paint.png">
-</details><br>
+Performance testing was done using lighthouse in chrome developer tools testing the performance, accessibility, best practices, and SEO of the website. I didn't expect the scores to be as low as they were so I looked into the possibility of whether my laptop would affect the scores. This turned out to be the case. I am using a Macbook Pro 2017 laptop and a wifi connection that isn't the strongest. The positive was that none of the results returned anything that needed urgently addressing. 
 
 **Lighthouse Desktop Test Results**
 
 <details><summary>Bag</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-desktop-bag.png">
 </details>
 <details><summary>Checkout</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-desktop-checkout.png">
 </details>
 <details><summary>Checkout Success</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-desktop-checkout-success.png">
 </details>
 <details><summary>Home</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-desktop-home.png">
 </details>
-<details><summary>Login</summary>
-<img src="">
-</details>
-<details><summary>Logout</summary>
-<img src="">
+<details><summary>Marketing Email</summary>
+<img src="TESTING/media/lighthouse/lighthouse-desktop-marketing-email.png">
 </details>
 <details><summary>Product Management</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-desktop-product-management.png">
 </details>
 <details><summary>Products</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-desktop-products.png">
 </details>
 <details><summary>Product Detail</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-desktop-product-detail.png">
 </details>
 <details><summary>Product Add</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-desktop-add-product.png">
 </details>
 <details><summary>Product Edit</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-desktop-edit-product.png">
 </details>
 <details><summary>Profile</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-desktop-profile.png">
 </details>
 <details><summary>Register</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-desktop-register.png">
 </details><br>
-
-
-Performance was slower for mobile testing. I did as much as I could improve it with some scores as low as 24 now sitting around 60 or above for most. There isn't much more I could do as essential JS and CSS was the main cause, so I am happy with the improvement. 
-
-<details><summary>Render Blocking</summary>
-<img src="">
+<details><summary>Sign In</summary>
+<img src="TESTING/media/lighthouse/lighthouse-desktop-login.png">
 </details>
-<details><summary>Reduce JS</summary>
-<img src="">
-</details><br>
+<details><summary>Sign Out</summary>
+<img src="TESTING/media/lighthouse/lighthouse-desktop-logout.png">
+</details>
+
+
+Performance for mobile testing was much slower, in particular, the checkout/checkout success pages. This was difficult to improve due to most of the issues being essential Javascript, CSS and third party code such as Stripe, Bootstrap, AWS and Google Fonts. Again, the issue of my laptop age/ internet may have negatively impacted the results showing.
 
 **Lighthouse Mobile Test Results**
 
 <details><summary>Bag</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-mobile-bag.png">
 </details>
 <details><summary>Checkout</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-mobile-checkout.png">
 </details>
 <details><summary>Checkout Success</summary>
-<img src="">
-</details>
-<details><summary>Contact</summary>
-<img src="">
-</details>
-<details><summary>Contact Success</summary>
-<img src="">
-</details>
-<details><summary>Favourites</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-mobile-checkout-success.png">
 </details>
 <details><summary>Home</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-mobile-home.png">
+</details>
+<details><summary>Marketing Email</summary>
+<img src="TESTING/media/lighthouse/lighthouse-mobile-marketing-email.png">
 </details>
 <details><summary>Products</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-mobile-products.png">
 </details>
 <details><summary>Product Detail</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-mobile-product-detail.png">
 </details>
 <details><summary>Product Add</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-mobile-add-product.png">
 </details>
 <details><summary>Product Edit</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-mobile-edit-product.png">
 </details>
 <details><summary>Profile</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-mobile-profile.png">
 </details>
 <details><summary>Register</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-mobile-register.png">
 </details>
 <details><summary>Sign In</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-mobile-login.png">
 </details>
 <details><summary>Sign Out</summary>
-<img src="">
+<img src="TESTING/media/lighthouse/lighthouse-mobile-logout.png">
 </details><br>
 
 ### Accessibility
@@ -692,7 +678,7 @@ _ _ _
     ![Image Error](TESTING/media/bugs-signup-error.png)
 
 - This seemed to be related to the email verification as the registration would be successful in the database but would not send an email for users to verify, which is why the error was appearing. This was related to the versions of python/django and their support of 'keyfile' and smtp.
-- I was hesitant to adjust the version of Django, to prevent database issues, so I opted for changing my Python version from 3.12 to 3.11 and this resolved the issue.
+- I was hesitant to adjust the version of Django, because of potential database issues, so I opted for changing my Python version from 3.12 to 3.11 and this resolved the issue.
 
     ![Image Fix](TESTING/media/bugs-signup-fix.png)
     ![Image Fix](TESTING/media/bugs-fix-verify-email.png)
@@ -708,7 +694,7 @@ _ _ _
     ![Image Error](TESTING/media/bugs-error-payment-intent.png)
     
 - It appeared that I had issues with how my logic handled metadata, so I adjusted this but the problem persisted.
-- I then put the payment intent logic into a try/except and added logging errors, to the run the checkout again and be able to identify specifically where the issue was appearing in the payment intent logic.
+- I then put the payment intent logic into a try/except and added logging errors, to run the checkout again and be able to identify specifically where the issue was appearing in the payment intent logic.
 - The Heroku error log then showed that the EMAIL_FROM_ORDERS was not configured correctly which was causing the issue.
 
     ![Image Fix](TESTING/media/bugs-fix-heroku-log.png)
