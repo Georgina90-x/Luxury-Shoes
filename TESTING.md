@@ -274,16 +274,16 @@ To ensure the site is accessible as possible I have taken the following steps:
 - Label functions, links, buttons, forms and input fields to ensure clarity of the roles for all features.
 - Ensuring that there is a sufficient colour contrast throughout the site.
 
-[Wave accessibility](#https://wave.webaim.org/) was used to test the websites accessibility, all results have no errors. Unfortunately, Wave could not test the Checkout and Product Management Pages.
+[Wave accessibility](#https://wave.webaim.org/) was used to test the websites accessibility. Unfortunately, Wave could not test the Checkout and Product Management Pages. For the Log In and Register pages Wave retrived errors that were linked to the crispy forms. Crispy forms itself is accessibility friendly but does not meet Wave's strict testing, however, crispy forms is designed to be friendly for Screen Readers, so this did not concern me as an urgent matter to address.
 
 
 - Bag (empty) [results](TESTING/media/wave/wave-bag.png)
 - Checkout Success [results](TESTING/media/wave/wave-checkout-success.png)
 - Home [results](TESTING/media/wave/wave-home.png)
-- Log In [results]() -------- aria labels
+- Log In [results](TESTING/media/wave/wave-login.png)
 - Products [results](TESTING/media/wave/wave-products.png)
 - Product Detail [results](TESTING/media/wave/wave-product-detail.png)
-- Register [results]() ------ aria labels
+- Register [results](TESTING/media/wave/wave-register.png)
 
 
 
