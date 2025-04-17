@@ -1,8 +1,8 @@
 # Luxury Shoes Testing
 
-![Website Image]()
+![Website Image](README/media/responsively-screenshot.png)
 
-[Live webpage](https://luxury-shoes-00974b0f1528.herokuapp.com/)
+[Luxury Shoes - Live webpage](https://luxury-shoes-00974b0f1528.herokuapp.com/)
 
 ## Contents
 

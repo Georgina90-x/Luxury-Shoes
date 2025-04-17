@@ -49,11 +49,11 @@ Card Number: 4242 4242 4242 4242 Exp: 02/25 Zip Code: 24242
 
 ## Mockup Screenshots
 
-Below is a mockup image of the Luxury Shoes ecommerce application created using the "Am I Responsive" website.
+Below is a mockup image of the Luxury Shoes ecommerce application created using the "Responsively" application.
 
-| Screenshot 1 |
+| Device Screenshot |
 | :---: |
-| ![screenshot]() |
+| ![screenshot](README/media/responsively-screenshot.png) |
 
 ## UX
 
@@ -267,19 +267,65 @@ _ _ _
   - For product pages to have a 'quick add to basket' feature rather than going into the individual product page.
 
 ## Tools & Technologies Used
-
+### Languages
 - [HTML](https://en.wikipedia.org/wiki/HTML) used for the main site content.
 - [CSS](https://en.wikipedia.org/wiki/CSS) used for the main site design and layout.
 - [CSS :root variables](https://www.w3schools.com/css/css3_variables.asp) used for reusable styles throughout the site.
+- [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) used for user interaction on the site.
+
+### Databases
+- [Amazon Web Services](https://amazonaws.com/) used to load the static files to the deployed site and hold order information.
+- [PostrgreSQL](https://www.postgresql.org/) an open sourced relational database for the deployed site.
+- [SQLite](https://sqlite.org/) used for local production database storage.
+
+### Frameworks
+- [Django](https://www.djangoproject.com/) used as a framework for the site.
+- [Bootstrap](https://getbootstrap.com/) used for responsive design and styling.
+
+### Libraries & Packages
 - [JQuery](https://www.jquery.com) used for user interaction on the site.
-- [GitHub](https://gitpod.io) used for secure online code storage.
+- [Font Awesome](https://fontawesome.com/) used to add GitHub icon to the footer and modal and search icon to the search button.
+- [Django Allauth](https://docs.allauth.org/en/latest/) used for user authentication and user form templating.
+- [Django Countries](https://pypi.org/project/django-countries/) used to render a dropdown with a countries list for the checkout form and address details in profile.
+- [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) used to render forms in a consistent style.
+- [Django Storages](https://django-storages.readthedocs.io/en/latest/) used to store files with compatibility to AWS S3 buckets.
+- [Gunicorn](https://gunicorn.org/) used as a Python WSGI HTTP server for the deployed site.
+- [Pillow](https://pypi.org/project/pillow/) used as an imaging library for processing the images.
+- [Dj Database URL](https://pypi.org/project/dj-database-url/) used to enable the DATABASE_URL variable.
+- [Psycopg2](https://pypi.org/project/psycopg2/) used as a database adapter to connect the site with PostgreSQL.
+- [Boto3](https://pypi.org/project/boto3/) AWS kit that allows connection to the S3 bucket.
+- [Coverage](https://coverage.readthedocs.io/en/7.8.0/) used to carry out a coverage report on the code.
+
+### Programs
+- [Pip](hhttps://pypi.org/project/pip/) used to install packages.
+- [GitHub](https://github.com) used for secure online code storage.
 - [Heroku](https://heroku.com) used for hosting the deployed front-end site.
 - [Flaticon](https://www.flaticon.com/) used for the favicon.
 - [Google Fonts](https://fonts.google.com/) used to search a suitable font and obtain a download link for that font.
-- [Font Awesome](https://fontawesome.com/) used to add GitHub icon to the footer and modal and search icon to the search button.
-- [Amazon Web Services](https://amazonaws.com/) used to load the static files to the deployed site and hold order information.
-- [Stripe](https://stripe.com/) used to process payments in the checkout page.
-- [Coverage](https://coverage.readthedocs.io/en/7.8.0/) used to carry out a coverage report on the code.
+- [Google Developer Tools](https://developer.chrome.com/docs/devtools/) used to check for issues and see the responsive design.
+- [Visual Studio Code](https://code.visualstudio.com/) used to develop the application within a virtual environment.
+- [Temp Mail](https://temp-mail.org/en) used to test the emails sending from the application.
+- [W3C validator](https://validator.w3.org/) used to validated the HTML files.
+- [Jigsaw CSS validator](https://jigsaw.w3.org/css-validator/) used to validate the CSS files.
+- [WAVE Web Accessibility Evaluation Tool](https://wave.webaim.org/) used to test accessibility of the site.
+- [jshint](https://jshint.com/) used to test the Javascript files.
+- [pep8](http://ww7.pep8online.com/) used to test the Python files.
+- [Chrome Lighthouse](https://developers.google.com/web/tools/lighthouse) used to test performance, accessibility, progressive web apps and SEO analysis of the pages.
+
+### Stripe
+- [Stripe](https://stripe.com/gb) has been used in the project to implement the payment system.
+
+Stripe for the website is currently in developer mode, which allows the user to be able to process test payments to check the function of the site. There are 3 methods to try that will return different results.
+- Success: the payment is successful
+- Require Authorisation: a box will appear during to authenticate the transaction.
+- Declined: the payment will be declined.
+
+| Type | Card No | Expiry | CVC | ZIP |
+| :--- | :--- |:--- | :--- | :--- |
+| Success| 4242 4242 4242 4242 | A date in the future | Any 3 digits | Any 5 digits |
+| Require authorisation | 4000 0027 6000 3184 | A date in the future | Any 3 digits | Any 5 digits |
+| Declined | 4000 0000 0000 0002 | A date in the future | Any 3 digits | Any 5 digits |
+
 
 ## Testing
 
