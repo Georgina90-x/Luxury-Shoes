@@ -360,10 +360,10 @@ It was done in the following steps:
     <br><code>EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASS')</code>
     <br><code>DEFAULT_FROM_EMAIL = os.getenv('EMAIL_HOST_USER')</code>
 
-6. Once this is done, the EMAIL_HOST_USER and EMAIL_HOST_PASS variables will need to be set in production. I used Heroku, and therefor, set these variables in the Config VAR's.
+6. Once this is done, the EMAIL_HOST_USER and EMAIL_HOST_PASS variables will need to be set in production. I used Heroku, and therefore, set these variables in the Config VAR's.
 
 ### Stripe
-The project was setup to make/retrieve payments using Stripe in developer mode.
+The project was set up to make/retrieve payments using Stripe in developer mode.
 It was done in the following steps:
 1. Register for an account at www.stripe.com
 2. Click on Dashboard in the top right of your profile.
@@ -383,22 +383,105 @@ It was done in the following steps:
 
 12. Now test that the webhook is working by completing an order at checkout, and note down any errors retrieved for troubleshooting bugs.
 
-
-
 ## Deployment
 
-The site was deployed to Heroku. The steps to deploy are as follows:
+The deployment process requires a number of configurations in order to work successfully. The following services and processes were used to deploy Luxury Shoes.
 
-- After pushing all content to the repository, navigate to Heroku.
-- In the [Heroku Dashboard](https://heroku.com/dashboard), navigate to the Project that you're working on.
-- Click on the 'Deploy' button located near the top left of the page.
-- Deployment method: Github > then select the repository to connect to.
-- Enable automatic deploys.
-- Deploy branch.
+## Amazon Web Services
 
+Amazon web services was used to provide storage for static files (images etc) to the deployed website on Heroku.
+
+## Heroku & Postgres
+
+The site was deployed to Heroku and uses a Postgres database. The steps to deploy are as follows:
+
+1. After creating a Postgres Database from Code Institute take note of the Database URL.
+2. In Settings.py configure the database settings. The DATABASE_URL will be configured in Heroku.
+<br><code>if 'DATABASE_URL' in os.environ:</code>
+   <br><code>DATABASES = {</code>
+        <br><code>'default':</code>
+        <br><code>dj_database_url.parse(os.environ.get('DATABASE_URL'))</code>
+    <br><code>}</code>
+<br><code>else:</code>
+    <br><code>DATABASES = {</code>
+        <br><code>'default': {</code>
+            <br><code>'ENGINE': 'django.db.backends.sqlite3',</code>
+            <br><code>'NAME': BASE_DIR / 'db.sqlite3',</code>
+        <br><code>}</code>
+    <br><code>}</code>
+
+3. In order for SQLite (local database) and Postgres (deployed database) to communicate with each other dj-database-url and psycopg2 need to be installed and then frozen in requirement.txt. Gunicorn will also need to be installed and then frozen in requirements.txt.
+4. Next, create a Procfile and insert the following code:
+<br><code>web: gunicorn luxury_shoes.wsgi:application</code>
+
+5. After pushing all content to the repository, navigate to www.heroku.com
+6. Create an account.
+7. In the [Heroku Dashboard](https://heroku.com/dashboard), click 'New' > 'Create New App'.
+8. Give the application a name(luxury-shoes), select the appropriate time zone and click 'Create App'.
+9.  In Settings, click on 'Reveal Config VAR's' and fill in the following with the appropriate values:
+<br><code>AWS_ACCESS_KEY</code>
+<br><code>AWS_SECRET_ACCESS_KEY</code>
+<br><code>DATABASE_URL</code>
+<br><code>DEFAULT_FROM_EMAIL</code>
+<br><code>EMAIL_FROM_MARKETING</code>
+<br><code>EMAIL_FROM_ORDERS</code>
+<br><code>EMAIL_FROM_SUPPORT</code>
+<br><code>EMAIL_HOST_PASS</code>
+<br><code>EMAIL_HOST_USER</code>
+<br><code>SECRET_KEY</code>
+<br><code>STRIPE_PUBLIC_KEY</code>
+<br><code>STRIPE_SECRET_KEY</code>
+<br><code>STRIPE_WH_SECRET</code>
+<br><code>USE_AWS</code>
+
+10. Under 'Deploy' connect the application to the Github repository and check 'Automatic deploys' so that any changes to the repository are automatically pushed to Heroku.
+11. Click 'Deploy Branch'.
+12. Heroku will then process and build from the repository to deploy the application.
 The live link can be found [here](https://luxury-shoes-00974b0f1528.herokuapp.com/).
 
-Amazon Web Service bucket has been used to provide the static files to the deployed website.
+## Local Deployment
+
+For local development of this project, it will need to be cloned. Use the following steps:
+
+1. Login to Github
+2. Navigate to the Luxury-Shoes repository https://github.com/Georgina90-x/Luxury-Shoes
+3. Click the 'Code' button and copy the HTTPS URL https://github.com/Georgina90-x/Luxury-Shoes.git
+4. In your chosen IDE, open a terminal and run the following command:
+<br><code>git clone https://github.com/Georgina90-x/Luxury-Shoes.git</code>
+
+5. This will then clone the repository into your workspace.
+6. Next, create an env.py file with the following:
+<br><code>import os</code>
+<br><code>STRIPE_PUBLIC_KEY</code>
+<br><code>STRIPE_SECRET_KEY</code>
+<br><code>STRIPE_WH_SECRET</code>
+<br><code>SECRET_KEY</code>
+
+7. Install the packages that are present in the requirements.txt file. Ensure that when installing Python it is version 3.11 or higher as this supports the latest (as of April 2025) SMTP and keyfile settings.
+8. Run the application.
+<br><code>python run app.py</code>
+
+9. Double check in settings.py if the database is connected to Postgres or the local sqlite database.
+10. When developing locally, DEBUG = True must be set. And ALLOWED_HOST must have the following:
+<br><code>ALLOWED_HOSTS = [</code>
+    <br><code>'127.0.0.1',  # Code Preview</code>
+    <br><code>'localhost',  # Stripe webhook listener</code>
+    <br><code>'YOUR_DEPLOYED_URL_HERE'</code>
+<br><code>]</code>
+
+11. Next run the following commands to finish setup:
+<br><code>python3 manage.py showmigrations</code>
+<br><code>python3 manage.py makemigrations --dry-run</code> Check that the intended migrations are expected.
+<br><code>python3 manage.py makemigrations</code>
+<br><code>python3 manage.py migrate --plan</code> Check that the intended migrations are expected.
+<br><code>python3 manage.py migrate</code>
+<br><code>python3 manage.py createsuperuser</code> Create a super/administrator user to control the site.
+<br><code>python3 manage.py loaddata categories.json</code> It is important to load categories BEFORE products.
+<br><code>python3 manage.py loaddata products.json</code>
+<br><code>python3 manage.py runserver</code>
+
+12. Now open the application URL http://127.0.0.1:8000/ 
+
 
 ## Credits
 
