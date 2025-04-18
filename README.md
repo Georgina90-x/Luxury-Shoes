@@ -389,7 +389,89 @@ The deployment process requires a number of configurations in order to work succ
 
 ## Amazon Web Services
 
-Amazon web services was used to provide storage for static files (images etc) to the deployed website on Heroku.
+Amazon web services was used to provide storage for static files (images etc) to the deployed website on Heroku. There are mulitple stages to this that I have broken down for ease.
+
+### Setting Up An S3 Bucket
+
+Here is a quick guide on how to set up:
+1. Create an account at www.aws.amazon.com
+2. Search S3 in the search bar and click S3.
+3. Click 'Create Bucket' and give the bucket a name, such as, luxury-shoes.
+4. Select 'ACL's enabled', 'Bucket Owner Preferred' and DESELECT 'Block All Public Access'. All other settings remain unchanged.
+5. Click 'Create Bucket'.
+6. With the bucket created, now click into the bucket.
+7. Click 'Properties' and navigate to 'Static Website Hosting'.
+8. Click 'Edit' and 'Enable'.
+9. For Index Document Input type in 'index.html'.
+10. For Error Document Input type in 'error.html' and then 'Save Changes'.
+11. Navigate to Permissions and 'Edit' the CORS (Cross-Origin Resource Sharing) and input the following code:
+<br><code>[</code>
+  <br><code>{</code>
+    <br><code>"AllowedHeaders": ["Authorisation"],</code>
+    <br><code>"AllowedMethods": ["GET"],</code>
+    <br><code>"AllowedOrigins": ["*"],</code>
+    <br><code>"ExposedHeaders": [],</code>
+  <br><code>}</code>
+<br><code>]</code>
+
+12. Click 'Save Changes'.
+13. Staying in Permissions, navigate to 'Bucket Policy' and click 'Edit' > 'Policy Generator'. This will open a new window.
+14. Policy Type: S3 Bucket Policy
+15. Principle: *
+16. Action: GetObject
+17. In the policy editor (previous window) click on the bucket ARN to copy it and paste into the Policy Generator ARN Input.
+18. Click 'Add Statement' > 'Generate Policy'.
+19. A popup will appear with some code, copy this code and paste it into the policy section of 'Edit Bucket Policy'.
+20. On the line of code that has "Resource" add a * to the end of the ARN. And click 'Save Changes'.
+21. In the Permission tab, navigate to the Access Control List (ACL) and click 'Edit'.
+22. Click 'List' in the Everyone(public access).
+23. Click the checkbox to accept the changes and then click 'Save Changes'.
+
+### Setting Up Users and Group Policies
+
+It is important that the bucket has the correct settings and access to the correct users/groups to prevent any unwanted access. Here is a guide to set this up:
+
+1. At www.aws.amazon.com in the search bar type 'IAM' and click on it.
+2. On the navbar to the left click on 'User Groups' > 'Create Group' and give the group a name such as manage-luxury-shoes and 'Create User Group'.
+3. On the navbar to the left click on 'Policies' > 'Create Policy'.
+4. Here click on the JSON tab and then in 'Actions' click 'Import Policy'.
+5. A searchbar will appear where you type S3 and click on 'AmazonS3FullAccess' and then 'Import Policy'.
+6. Now open S3 in another tab and copy the ARN code like previously.
+7. Back to the previous window, under "Resource" paste the ARN value twice and give the second one a * at the end. It will look something like this:
+<br><code>{</code>
+  <br><code>"Version": "2025-04-10"</code>
+  <br><code>"Statement": [</code>
+    <br><code>{</code>
+      <br><code>"Sid": "Statement1",</code>
+      <br><code>"Effects": "Allow",</code>
+      <br><code>"Action": [</code>
+        <br><code>"s3:*"</code>
+      <br><code>],</code>
+      <br><code>"Resource:: [</code>
+        <br><code>"YOUR_ARN",</code>
+        <br><code>"YOUR_ARN/*</code>
+      <br><code>]</code>
+    <br><code>}</code>
+  <br><code>]</code>
+<br><code>}</code>
+
+8. Click 'Next' and then give the Policy a name and description before clicking 'Create Policy'.
+9. With the group and policy created, it's now time to link them together.
+10. Click 'User Groups' in the navbar to the left and click into the group you created, manage-luxury-shoes.
+11. Under the Permission tab click 'Add Permissions' > 'Attach Policies'.
+12. In the search bar, search for the policy you had created, check the box and click 'Attach Policies'.
+13. In the navbar to the left, click 'Users' > 'Create User'.
+14. Enter a desired username and click 'Next' > 'Create User'.
+15. Now click on the new user and navigate to 'Security Credentials'.
+16. Scroll down to Access Keys and click 'Create Access Key' > check 'Application Running Outside AWS' > 'Next'.
+17. Click 'Create Access Key' and then download the csv file. This is the only time this can be downloaded, otherwise a new one will need to be generated.
+18. This document contains the AWS_ACCESS_KEY and AWS_SECRET_ACCESS_KEY values for your settings.
+19. Configure the appropriate settings and also in Heroku var's.
+<br><details><summary>AWS in Settings.py</summary>
+<img src="README/media/aws-settings.png">
+</details>
+
+
 
 ## Heroku & Postgres
 
