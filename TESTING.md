@@ -323,7 +323,7 @@ The website was tested on the following browsers:
 | Product Edit Modal | Button calls modal, modal deletes product | &#9989; |
 | Product Delete Modal | Button calls modal, modal deletes product | &#9989; |
 | Image On Click | Links work correctly, open new window | &#9989; |
-| Image upload | Image uploads and displays correctly | &#9989; |
+| Image Upload | Image uploads and displays correctly | &#9989; |
 | Size Selection | Size updates to size selected | &#9989; |
 | Quantity Updates | Quantity updates from product and bag view | &#9989; |
 | Add to Bag | Correct items add to bag | &#9989; |
@@ -332,8 +332,9 @@ The website was tested on the following browsers:
 | Checkout | Bag items displayed in checkout | &#9989; |
 | Payment | Stripe payment received | &#9989; | 
 | Purchase | Webhooks sent and all working without errors| &#9989; |
-| Checkout emails | Confirmation emails delivered with correct order information | &#9989; |
+| Checkout Emails | Confirmation emails delivered with correct order information | &#9989; |
 | Profile Page | Personal information and order history displays correctly | &#9989; |
+| Marketing Emails | Marketing emails delivered with intended message from form | &#9989; |
 
 
 ### Testing User Stories

@@ -7,7 +7,7 @@
 - Luxury Shoes has a crisp and clear aesthetic that makes it easy for the user to see the products and their details.
 - Luxury Shoes allows users to add products to a shopping basket and purchase them, creating an order.
 - In order to make a test purchase on Luxury Shoes please use the following details:
-Card Number: 4242 4242 4242 4242 Exp: 02/25 Zip Code: 24242
+Card Number: 4242 4242 4242 4242 Exp: 02/26 Zip Code: 24242
 
 ## Table of Contents
 
@@ -37,6 +37,8 @@ Card Number: 4242 4242 4242 4242 Exp: 02/25 Zip Code: 24242
 
 [Testing](#testing)
 
+[APIs and Configuration](#apis-and-configuration)
+
 [Deployment](#deployment)
 
 [Credits](#credits)
@@ -57,7 +59,7 @@ Below is a mockup image of the Luxury Shoes ecommerce application created using 
 
 ## UX
 
-- The design for Luxury Shoes was created as a series of wireframes covering mobile, tablet and desktop to determine the initial design and layout of the site.
+- The design for Luxury Shoes was created as a series of wireframes covering mobile and desktop desktop to determine the initial design and layout of the site.
 - Luxury Shoes is designed to be simple and easy to navigate using standard user conventions for ecommerce websites.
 - The applications display the homepage, product pages, product details pages, shopping basket and checkout confirmation.
 - Toasts appear in the top right of the page to let the user know that they have 'added to bag', 'removed from bag' and 'updated the bag', as well as a shopping bag toast that shows the user the products in their bag as well as the cost.
@@ -80,6 +82,10 @@ I have used CSS `:root` variables to easily update the global colour scheme by c
     --taupe: #8C7D75;
 }
 ```
+| Colour Scheme |
+| :---: |
+| ![screenshot](README/media/colour-scheme.png) | 
+
 
 ### Typography
 
@@ -330,6 +336,54 @@ Stripe for the website is currently in developer mode, which allows the user to 
 ## Testing
 
 For all testing, please refer to the [TESTING.md](TESTING.md) file.
+
+## APIs and Configuration
+
+### Google Emails
+The project was setup to send emails (registration, confirmation & marketing) using my Google Account as an SMTP server.
+It was done in the following steps:
+1. Navigate to Settings > Account > Google Account Settings
+2. Activate Two Step Verification
+3. In the search bar type 'App Passwords', name the App (luxury-shoes-emails) and click 'Create'.
+4. A 16 digit code then appears which is the App password, keep this safe.
+5. Navigate to Settings.py to then set the email variables accordingly. For example:
+<br><code>if 'DEVELOPMENT' in os.environ:</code>
+    <br><code>EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'</code>
+    <br><code># Default email for no reply</code>
+    <br><code>DEFAULT_FROM_EMAIL = "noreply@luxuryshoes.com"</code>
+<br><code>else:</code>
+    <br><code>EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'</code>
+    <br><code>EMAIL_USE_TLS = True</code>
+    <br><code>EMAIL_PORT = 587</code>
+    <br><code>EMAIL_HOST = 'smtp.gmail.com'</code>
+    <br><code>EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')</code>
+    <br><code>EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASS')</code>
+    <br><code>DEFAULT_FROM_EMAIL = os.getenv('EMAIL_HOST_USER')</code>
+
+6. Once this is done, the EMAIL_HOST_USER and EMAIL_HOST_PASS variables will need to be set in production. I used Heroku, and therefor, set these variables in the Config VAR's.
+
+### Stripe
+The project was setup to make/retrieve payments using Stripe in developer mode.
+It was done in the following steps:
+1. Register for an account at www.stripe.com
+2. Click on Dashboard in the top right of your profile.
+3. This main page then shows the API keys under 'For Developers'.
+4. Copy the publishable key and the secret key.
+5. As these are sensitive pieces of information, variables will be set in env.py to keep them secure.
+6. In env.py create the variables STRIPE_PUBLIC_KEY and STRIPE_SECRET_KEY.
+<br><code>os.environ.setdefault('STRIPE_PUBLIC_KEY', 'YOUR_PUBLIC_KEY_VALUE_GOES_HERE')</code>
+<br><code>os.environ.setdefault('STRIPE_SECRET_KEY', 'YOUR_SECRET_KEY_VALUE_GOES_HERE')</code>
+
+7. Back to the Stripe Dashboard, at the bottom left of the page click on 'Developers' and then Webhooks.
+8. Here you will click 'Add Destination' > Select 'All Events' > Continue > Webhook Events.
+9. You will then need to configure the URL which will be the URL of the website followed by /checkout/wh/. For my website I used https://luxury-shoes-00974b0f1528.herokuapp.com/checkout/wh/
+10. Once completed, a secret key is assigned, note this down.
+11. Back to env.py create a variable for STRIPE_WH_SECRET.
+<br><code>os.environ.setdefault('STRIPE_WH_SECRET', 'YOUR_SECRET_WEBHOOK_VALUE_GOES_HERE')</code>
+
+12. Now test that the webhook is working by completing an order at checkout, and note down any errors retrieved for troubleshooting bugs.
+
+
 
 ## Deployment
 
