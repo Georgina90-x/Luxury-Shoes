@@ -59,7 +59,7 @@ Below is a mockup image of the Luxury Shoes ecommerce application created using 
 
 ## UX
 
-- The design for Luxury Shoes was created as a series of wireframes covering mobile and desktop desktop to determine the initial design and layout of the site.
+- The design for Luxury Shoes was created as a series of wireframes covering mobile and desktop to determine the initial design and layout of the site.
 - Luxury Shoes is designed to be simple and easy to navigate using standard user conventions for ecommerce websites.
 - The applications display the homepage, product pages, product details pages, shopping basket and checkout confirmation.
 - Toasts appear in the top right of the page to let the user know that they have 'added to bag', 'removed from bag' and 'updated the bag', as well as a shopping bag toast that shows the user the products in their bag as well as the cost.
@@ -290,7 +290,7 @@ _ _ _
 
 ### Libraries & Packages
 - [JQuery](https://www.jquery.com) used for user interaction on the site.
-- [Font Awesome](https://fontawesome.com/) used to add GitHub icon to the footer and modal and search icon to the search button.
+- [Font Awesome](https://fontawesome.com/) used for icons across the site such as 'account', 'shopping bag', 'search bar' etc.
 - [Django Allauth](https://docs.allauth.org/en/latest/) used for user authentication and user form templating.
 - [Django Countries](https://pypi.org/project/django-countries/) used to render a dropdown with a countries list for the checkout form and address details in profile.
 - [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) used to render forms in a consistent style.
@@ -303,7 +303,7 @@ _ _ _
 - [Coverage](https://coverage.readthedocs.io/en/7.8.0/) used to carry out a coverage report on the code.
 
 ### Programs
-- [Pip](hhttps://pypi.org/project/pip/) used to install packages.
+- [Pip](https://pypi.org/project/pip/) used to install packages.
 - [GitHub](https://github.com) used for secure online code storage.
 - [Heroku](https://heroku.com) used for hosting the deployed front-end site.
 - [Flaticon](https://www.flaticon.com/) used for the favicon.
