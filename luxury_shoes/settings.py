@@ -220,7 +220,7 @@ STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     # Default email for no reply
-    DEFAULT_FROM_EMAIL = "noreply@luxuryshoes.com"
+    DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_USER')  #"noreply@luxuryshoes.com"
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True
