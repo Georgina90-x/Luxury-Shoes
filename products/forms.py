@@ -5,6 +5,7 @@ from .widgets import CustomClearableFileInput
 
 
 class ProductForm(forms.ModelForm):
+    image_url = forms.URLField(label='Image URL', required=False)
 
     class Meta:
         model = Product

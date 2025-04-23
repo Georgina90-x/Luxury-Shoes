@@ -1,3 +1,7 @@
+import requests
+import os
+
+from django.core.files.base import ContentFile
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -132,6 +136,15 @@ def product_management(request):
     return render(request, 'products/product_management.html', context)
 
 
+def save_image_from_url(instance, url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        file_name = os.path.basename(url.split('?')[0])
+        instance.image.save(
+            file_name, ContentFile(response.content), save=False
+            )
+
+
 @login_required
 def add_product(request):
     """
@@ -143,7 +156,19 @@ def add_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
-            product = form.save()
+            product = form.save(commit=False)
+
+            # Handle image upload via URL
+            image_url = form.cleaned_data.get('image_url')
+            if image_url and not form.cleaned_data.get('image'):
+                try:
+                    save_image_from_url(product, image_url)
+                except Exception as e:
+                    messages.error(request, f'Image download failed: {e}')
+                    return render(request, 'products/add_product.html', {
+                        'form': form}
+                        )
+            product.save()
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
@@ -172,7 +197,22 @@ def edit_product(request, product_id):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
-            form.save()
+            product = form.save(commit=False)
+
+            # Handle image upload via URL
+            image_url = form.cleaned_data.get('image_url')
+
+            #  Only handle the image URL if user has not uploaded a new file
+            if image_url:
+                product.image = None
+                try:
+                    save_image_from_url(product, image_url)
+                except Exception as e:
+                    messages.error(request, f'Image download failed: {e}')
+                    return render(request, 'products/edit_product.html', {
+                        'form': form, 'product': product}
+                        )
+            product.save()
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
